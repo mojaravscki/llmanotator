@@ -42,18 +42,20 @@ pip install -r requirements.txt
 
 ```
 python gpt.py \
-    --config_file /config.txt \
-    --reference_images_folder /references \
-    --input_images_folder /input \
-    --output_folder /output \
-    --groundingdino_config /GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py \
-    --groundingdino_weights /weights/groundingdino_swint_ogc.pth \
-    --clip_model_dir /clip-vit-base-patch32 \
-    --prompt_file /path/to/prompt.txt \
-    --openai_key <OPEN_API_KEY> \
+    --config_file config.txt \
+    --reference_images_folder references/ \
+    --input_images_folder input/ \
+    --output_folder output/ \
+    --groundingdino_config GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py \
+    --groundingdino_weights weights/groundingdino_swint_ogc.pth \
+    --clip_model_dir clip-vit-base-patch32/ \
+    --prompt_file prompt.txt \
+    --openai_key sk-OPEN_AI_API_KEY \
     --use_lab \
-    --patch_width 100 \
-    --patch_height 100 \
+    --patch_width 150 \
+    --patch_height 150 \
     --gpt_model "gpt-4o" \
-    --target_objects "olive fruit"
+    --target_objects "olive fruit" \
+    --persistent
+
 ```
