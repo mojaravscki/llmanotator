@@ -16,6 +16,12 @@ from langchain_openai import ChatOpenAI
 from langchain.schema.messages import HumanMessage
 from dotenv import load_dotenv
 import io
+import argparse
+import shutil
+import csv
+
+# Suppress tokenizer parallelism warnings
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 # Configure logging
 logging.basicConfig(
@@ -145,22 +151,21 @@ def load_groundingdino_model(config_path: str, weights_path: str, device: torch.
 ##############################################################################
 # CLIP Loader
 ##############################################################################
-def load_clip_model(device: torch.device = None) -> tuple:
+def load_clip_model(clip_model_dir: str, device: torch.device = None) -> tuple:
     """Load the local CLIP model."""
     if device is None:
         device = torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu")
     logging.info(f"[load_clip_model] Using device: {device}")
 
-    LOCAL_CLIP_DIR = "/Users/macbookpro/Documents/Projects/kws/clip-vit-base-patch32"
-    clip_model = CLIPModel.from_pretrained(LOCAL_CLIP_DIR)
+    clip_model = CLIPModel.from_pretrained(clip_model_dir)
     clip_model.to(device)  # Move model to device
-    processor = CLIPProcessor.from_pretrained(LOCAL_CLIP_DIR)
+    processor = CLIPProcessor.from_pretrained(clip_model_dir)
     return clip_model, processor, device
 
 ##############################################################################
 # Vector Store Functions
 ##############################################################################
-def build_reference_vectorstore(reference_images: list, clip_model: CLIPModel, processor: CLIPProcessor, device: torch.device, use_lab: bool = False, patch_save_dir: str = "patches/vector_db") -> FAISS:
+def build_reference_vectorstore(reference_images: list, clip_model: CLIPModel, processor: CLIPProcessor, device: torch.device, use_lab: bool = False, patch_save_dir: str = "patches/vector_db", patch_size=(100, 100)) -> FAISS:
     """
     Build a FAISS vector store from reference images with augmentations and center-of-mass patches.
     """
@@ -200,7 +205,7 @@ def build_reference_vectorstore(reference_images: list, clip_model: CLIPModel, p
         center = calculate_center_of_mass(np_image)
 
         # Extract patch
-        patch = extract_center_patch(np_image, center, patch_size=(50, 50))
+        patch = extract_center_patch(np_image, center, patch_size=patch_size)
         patch_pil = Image.fromarray(patch)
 
         # Save original patch
@@ -256,71 +261,68 @@ def build_reference_vectorstore(reference_images: list, clip_model: CLIPModel, p
     return vectorstore
 
 ##############################################################################
-# OpenAI GPT-4 Integration via LangChain
+# Orchestrator Functions
 ##############################################################################
-def get_ripeness_from_gpt(chat: ChatOpenAI, image_path: str, vector_db_label: str) -> str:
+def orchestrate_annotation(chat: ChatOpenAI, vector_db_label: str, target_objects: list, image_description: str = None) -> dict:
     """
-    Send the entire detected region image and vector database label to GPT-4 to get the ripeness score.
+    Determines whether to annotate the detected object based on vector DB label and ChatGPT's analysis.
 
     Parameters:
         chat (ChatOpenAI): Initialized LangChain ChatOpenAI instance.
-        image_path (str): Path to the saved image of the detected object (entire region).
         vector_db_label (str): Label obtained from the vector database.
+        target_objects (list): List of target object names (e.g., ["olive fruit", "apple"]).
+        image_description (str, optional): Description of the image for ChatGPT analysis.
 
     Returns:
-        str: Ripeness score based on the Jaén Scale.
+        dict: Decision and additional information if applicable.
     """
-    # Encode the image to base64
-    mime_type = get_mime_type(image_path)
-    with open(image_path, "rb") as image_file:
-        image_data = image_file.read()
-        image_base64 = base64.b64encode(image_data).decode("utf-8")
-
-    # Prepare the prompt
-    prompt = (
-        "You are an olive fruit specialist. Based on the skin color (Jaén Scale) and the information from the vector database, "
-        "what is the ripeness of this olive fruit?\n\n"
-        "Scale from 0 to 7, where:\n"
-        "0: Intense green.\n"
-        "1: Yellowish green.\n"
-        "2: Purple spots.\n"
-        "3: Purple on more than 50% of the fruit.\n"
-        "4: Purple/black on the surface, pulp still green.\n"
-        "5: Black with partially purple pulp.\n"
-        "6: Black with fully purple pulp.\n"
-        "7: Black with dark pulp all the way to the stone.\n\n"
-        f"Vector Database Label: {vector_db_label}\n\n"
-        "Please analyze the attached image and provide the ripeness score based on the Jaén Scale. "
-        "Return Class 0 - Green, Class 1 - Green Yellow, Class 2 - <50% red, Class 3 - > 50% red, Class 4 - red, Class 5 - purple/black, directly."
+    # Step 1: Ask ChatGPT if the object matches any of the target objects
+    prompt_is_target = (
+        f"Based on the following label from the vector database: '{vector_db_label}', "
+        f"does this object match any of the following target objects: {', '.join(target_objects)}? "
+        "Answer with the matched object name or 'No'."
     )
-
-    # Prepare the message with the encoded image and the custom prompt
-    message_content = [
-        {
-            "type": "text", 
-            "text": prompt
-        },
-        {
-            "type": "image_url",
-            "image_url": {"url": f"data:{mime_type};base64,{image_base64}"}  # Dynamic MIME type
-        },
-    ]
-
-    # Create a HumanMessage with the prepared content
-    human_message = HumanMessage(content=message_content)
-
-    # Invoke the model
+    human_message = HumanMessage(content=prompt_is_target)
+    
     try:
-        output = chat.invoke([human_message])
-        ripeness = output.content.strip()
-
-        logging.info(f"Ripeness Score: {ripeness}")
-        print ("[get_ripeness_from_gpt] GPT Output:", ripeness)
+        response_is_target = chat([human_message]).content.strip()
     except Exception as e:
-        logging.error(f"[ERROR] OpenAI API call failed: {e}")
-        ripeness = "Ripeness assessment unavailable."
+        logging.error(f"[orchestrate_annotation] ChatGPT API call failed: {e}")
+        return {"annotate": False, "reason": "ChatGPT API error"}
 
-    return ripeness
+    # Check if the response matches any target object
+    matched_object = None
+    for obj in target_objects:
+        if response_is_target.lower() == obj.lower():
+            matched_object = obj
+            break
+
+    if matched_object:
+        logging.info(f"[orchestrate_annotation] Matched Object: {matched_object}")
+
+        # Step 2: Ask ChatGPT for specific assessment based on the matched object
+        if image_description:
+            prompt_assessment = (
+                f"Given that the object is a '{matched_object}' with the following description: '{image_description}', "
+                f"please assess its ripeness based on the Jaén Scale. Provide a class between 0 to 7."
+            )
+        else:
+            prompt_assessment = (
+                f"Given that the object is a '{matched_object}', please assess its ripeness based on the Jaén Scale. "
+                "Provide a class between 0 to 7."
+            )
+        human_message_assessment = HumanMessage(content=prompt_assessment)
+        
+        try:
+            response_assessment = chat([human_message_assessment]).content.strip()
+            return {"annotate": True, "matched_object": matched_object, "assessment": response_assessment}
+        except Exception as e:
+            logging.error(f"[orchestrate_annotation] ChatGPT assessment failed: {e}")
+            return {"annotate": True, "matched_object": matched_object, "assessment": "Assessment unavailable"}
+
+    else:
+        # Step 3: Decide not to annotate
+        return {"annotate": False, "reason": "Not the target object"}
 
 ##############################################################################
 # CLASSIFY SEGMENTED OBJECTS
@@ -332,18 +334,22 @@ def classify_segmented_objects(
     processor: CLIPProcessor,
     device: torch.device,
     vectorstore: FAISS,
-    chat: ChatOpenAI,
+    chat: ChatOpenAI = None,
     top_k: int = 1,
-    use_lab: bool = False
+    use_lab: bool = False,
+    cropped_save_dir: str = "cropped",
+    patch_size: tuple = (100, 100),
+    label_to_id_map: dict = {},
+    target_objects: list = []
 ) -> list:
-    """Classify each segmented object by matching patches against the reference vectorstore and assessing ripeness via GPT."""
+    """Classify each segmented object by matching patches against the reference vectorstore."""
     results = []
     for j, bbox in enumerate(boxes):
         x_min, y_min, x_max, y_max = bbox
         center_global = (int((x_min + x_max) / 2), int((y_min + y_max) / 2))
         
-        # Extract patch for vector database comparison
-        patch = extract_center_patch(image_rgb, center_global, patch_size=(100, 100))
+        # Extract patch for vector database
+        patch = extract_center_patch(image_rgb, center_global, patch_size=patch_size)
         patch_pil = Image.fromarray(patch)
         
         # Generate embedding
@@ -359,72 +365,123 @@ def classify_segmented_objects(
             matches.append({"label": label, "distance": "N/A"})  # Distance not directly available
             logging.info(f"Box #{j} - Match {k+1}: {label}")
         
-        # Save the detected patch image
-        detected_patches_dir = "patches/detected_patches"
-        os.makedirs(detected_patches_dir, exist_ok=True)
-        patch_save_path = os.path.join(detected_patches_dir, f"detected_patch_{j}.png")
-        patch_pil.save(patch_save_path)
-        logging.info(f"[INFO] Detected patch image saved at: {patch_save_path}")
+        # Extract the entire cropped object for GPT
+        cropped_object = image_rgb[y_min:y_max, x_min:x_max]
+        cropped_object_pil = Image.fromarray(cropped_object)
         
-        # Extract the entire detected region for GPT ripeness assessment
-        detected_objects_dir = "patches/detected_objects_full"
-        os.makedirs(detected_objects_dir, exist_ok=True)
-        detected_region = image_rgb[y_min:y_max, x_min:x_max]
-        detected_region_pil = Image.fromarray(detected_region)
-        detected_region_save_path = os.path.join(detected_objects_dir, f"detected_object_full_{j}.png")
-        detected_region_pil.save(detected_region_save_path)
-        logging.info(f"[INFO] Detected full region image saved at: {detected_region_save_path}")
+        # Save the cropped object
+        os.makedirs(cropped_save_dir, exist_ok=True)
+        cropped_save_path = os.path.join(cropped_save_dir, f"detected_object_{j}.png")
+        cropped_object_pil.save(cropped_save_path)
+        logging.info(f"[INFO] Detected object image saved at: {cropped_save_path}")
         
-        # Get ripeness from GPT-4 using the entire detected region
-        vector_db_label = matches[0]["label"] if matches else "Unknown"
-        print ("[classify_segmented_objects] Vector DB Label:", vector_db_label)
-        ripeness = get_ripeness_from_gpt(chat, detected_region_save_path, vector_db_label)
-        print ("[classify_segmented_objects] GPT Ripeness Score:", ripeness)
-        logging.info(f"Box #{j} - Ripeness Score: {ripeness}")
+        # Initialize image description (you might want to automate this based on actual data)
+        image_description = "A high-resolution image of the detected object."
+
+        orchestrator_decision = {"annotate": False, "reason": "No annotation required"}
+
+        # Get orchestrator's decision
+        if chat:
+            vector_db_label = matches[0]["label"] if matches else "Unknown"
+            logging.info(f"[classify_segmented_objects] Vector DB Label: {vector_db_label}")
+            orchestrator_decision = orchestrate_annotation(chat, vector_db_label, target_objects=target_objects, image_description=image_description)
+            
+            if orchestrator_decision.get("annotate"):
+                ripeness = orchestrator_decision.get("assessment", "Assessment unavailable")
+                matched_object = orchestrator_decision.get("matched_object", "Unknown")
+                logging.info(f"[classify_segmented_objects] Matched Object: {matched_object}, Ripeness: {ripeness}")
+            else:
+                ripeness = orchestrator_decision.get("reason", "No annotation required")
+                logging.info(f"[classify_segmented_objects] Annotation skipped: {ripeness}")
+        else:
+            vector_db_label = matches[0]["label"] if matches else "Unknown"
+            ripeness = "N/A"
+            logging.info(f"[classify_segmented_objects] OpenAI API not initialized. Skipping annotation.")
+        
+        # Map label to class ID
+        class_id = label_to_id_map.get(vector_db_label, len(label_to_id_map))  # Default to next ID if not found
         
         results.append({
             "bbox": bbox,
             "matches": matches,
-            "ripeness": ripeness
+            "ripeness": ripeness,
+            "class_id": class_id,
+            "annotate": orchestrator_decision.get("annotate", False) if chat else False
         })
     return results
 
 ##############################################################################
-# Export Annotations to YOLO Format
+# Annotation Module
 ##############################################################################
-def export_to_yolo(output_txt_path: str, boxes: list, class_ids: list, image_width: int, image_height: int):
+def annotate_image(image_rgb: np.ndarray, results: list, output_image_path: str, labels_dir: str, W_orig: int, H_orig: int):
     """
-    Export bounding boxes and class IDs to YOLO format.
+    Annotate the image with bounding boxes and labels based on results.
 
     Parameters:
-        output_txt_path (str): Path to the output YOLO annotation file.
-        boxes (list): List of bounding boxes in the format [x_min, y_min, x_max, y_max].
-        class_ids (list): List of class IDs corresponding to each bounding box.
-        image_width (int): Width of the image.
-        image_height (int): Height of the image.
+        image_rgb (np.ndarray): Original image in RGB.
+        results (list): List containing annotation decisions and details.
+        output_image_path (str): Path to save the annotated image.
+        labels_dir (str): Directory to save YOLO label files.
+        W_orig (int): Original image width.
+        H_orig (int): Original image height.
     """
-    with open(output_txt_path, 'w') as f:
-        for bbox, class_id in zip(boxes, class_ids):
-            x_min, y_min, x_max, y_max = bbox
-            # Calculate YOLO format values
-            x_center = (x_min + x_max) / 2 / image_width
-            y_center = (y_min + y_max) / 2 / image_height
-            width = (x_max - x_min) / image_width
-            height = (y_max - y_min) / image_height
-            # Ensure values are between 0 and 1
-            x_center = min(max(x_center, 0), 1)
-            y_center = min(max(y_center, 0), 1)
-            width = min(max(width, 0), 1)
-            height = min(max(height, 0), 1)
-            # Write to file
-            f.write(f"{class_id} {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
-    logging.info(f"[INFO] YOLO annotations saved at: {output_txt_path}")
+    annotated_frame = image_rgb.copy()
+    label_contents = []
+    
+    for result in results:
+        bbox = result["bbox"]
+        label = result["matches"][0]["label"] if result["matches"] else "Unknown"
+        ripeness = result.get("ripeness", "N/A")
+        class_id = result.get("class_id", 0)
+        annotate = result.get("annotate", False)
+        
+        x_min, y_min, x_max, y_max = bbox
+        
+        if annotate:
+            # Draw bounding box
+            cv2.rectangle(annotated_frame, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)  # Green box
+            
+            # Prepare label with ripeness
+            label_with_ripeness = f"{label} | Ripeness: {ripeness}"
+            
+            # Draw label
+            cv2.putText(
+                annotated_frame,
+                label_with_ripeness,
+                (x_min, max(y_min - 10, 0)),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.5,
+                (0, 255, 0),
+                1,
+                cv2.LINE_AA
+            )
+            
+            # Convert to YOLO format
+            x_center = (x_min + x_max) / 2 / W_orig
+            y_center = (y_min + y_max) / 2 / H_orig
+            width = (x_max - x_min) / W_orig
+            height = (y_max - y_min) / H_orig
+            
+            # Append label in YOLO format
+            #label_contents.append(f"{class_id} {x_center} {y_center} {width} {height} {label}")
+            label_contents.append(f"{class_id} {x_center} {y_center} {width} {height}")
+    
+    # Save the annotated image
+    cv2.imwrite(output_image_path, cv2.cvtColor(annotated_frame, cv2.COLOR_RGB2BGR))  # Convert RGB to BGR for saving
+    logging.info(f"[annotate_image] Annotated image saved at: {output_image_path}")
+    
+    # Save labels in YOLO format
+    label_file_path = os.path.join(labels_dir, os.path.splitext(os.path.basename(output_image_path))[0] + ".txt")
+    with open(label_file_path, "w") as label_file:
+        for content in label_contents:
+            label_file.write(content + "\n")
+    logging.info(f"[annotate_image] YOLO labels saved at: {label_file_path}")
 
 ##############################################################################
 # Process and Save Input Image Patches
 ##############################################################################
 
-def process_and_save_input_image_patches(input_image_path, boxes, patch_save_dir="patches/detected_objects", patch_size=(100, 100)):
+def process_and_save_input_image_patches(input_image_path, boxes, patch_save_dir="cropped", patch_size=(100, 100)):
     """
     Extract and save patches from the input image based on detected bounding boxes.
     
@@ -447,7 +504,7 @@ def process_and_save_input_image_patches(input_image_path, boxes, patch_save_dir
         # Adjust center to the global coordinates
         center_global = (center[0] + x_min, center[1] + y_min)
 
-        # Extract and save the patch
+        # Extract and save the patch for vector database
         extract_and_save_patch(
             image=image,
             center=center_global,
@@ -459,27 +516,60 @@ def process_and_save_input_image_patches(input_image_path, boxes, patch_save_dir
 ##############################################################################
 # MAIN PIPELINE
 ##############################################################################
-def main_pipeline(input_image_path: str, reference_images: list, groundingdino_config: str, groundingdino_weights: str, use_lab: bool = False):
+def main_pipeline(
+    input_image_path: str,
+    reference_images: list,
+    groundingdino_config: str,
+    groundingdino_weights: str,
+    clip_model_dir: str,
+    output_folder: str,
+    prompt: str = None,
+    openai_key: str = None,
+    use_lab: bool = False,
+    patch_size: tuple = (100, 100),
+    label_to_id_map: dict = {},
+    target_objects: list = []
+):
     """
-    Main pipeline for object detection, patch extraction, classification, ripeness assessment, and exporting annotations to YOLO format.
+    Main pipeline for object detection, patch extraction, classification, and saving annotated image and patches.
     """
+    # Setup output directories
+    processed_images_dir = os.path.join(output_folder, "processed_images")
+    images_dir = os.path.join(output_folder, "images")
+    labels_dir = os.path.join(output_folder, "labels")
+    cropped_dir = os.path.join(output_folder, "cropped")
+
+    for directory in [processed_images_dir, images_dir, labels_dir, cropped_dir]:
+        os.makedirs(directory, exist_ok=True)
+
     logging.info(f"\n[main_pipeline] Loading GroundingDINO model...")
     model = load_groundingdino_model(groundingdino_config, groundingdino_weights)
     
     logging.info(f"\n[main_pipeline] Loading local CLIP model...")
-    clip_model, processor, device = load_clip_model()
+    # Load the CLIP model
+    clip_model, processor, device = load_clip_model(clip_model_dir, device=None)
     
     logging.info(f"\n[main_pipeline] Building vector store from reference images...")
-    vectorstore = build_reference_vectorstore(reference_images, clip_model, processor, device, use_lab=use_lab)
+    vectorstore = build_reference_vectorstore(reference_images, clip_model, processor, device, use_lab=use_lab, patch_size=patch_size)
     
-    logging.info(f"\n[main_pipeline] Initializing ChatOpenAI model...")
-    chat = ChatOpenAI(model="gpt-4o", max_tokens=10000)  # Corrected model name
+    # Initialize ChatOpenAI if OpenAI key is provided
+    if openai_key:
+        os.environ["OPENAI_API_KEY"] = openai_key  # Set the OpenAI API key
+        logging.info(f"\n[main_pipeline] Initializing ChatOpenAI model...")
+        try:
+            chat = ChatOpenAI(model_name="gpt-4", max_tokens=1000)  # Use the specified GPT model
+        except Exception as e:
+            logging.error(f"[main_pipeline] Failed to initialize ChatOpenAI: {e}")
+            chat = None
+    else:
+        chat = None
+        logging.info(f"\n[main_pipeline] OpenAI API key not provided. Skipping GPT-based ripeness assessment.")
     
     logging.info(f"\n[main_pipeline] Segmenting objects in input image...")
     # Load input image
     image_source, image_transformed = load_image(input_image_path)
     
-    TEXT_PROMPT = "olive fruit"
+    TEXT_PROMPT = prompt  # Use the passed parameter
     BOX_THRESHOLD = 0.35
     TEXT_THRESHOLD = 0.25
     
@@ -517,11 +607,16 @@ def main_pipeline(input_image_path: str, reference_images: list, groundingdino_c
     process_and_save_input_image_patches(
         input_image_path=input_image_path,
         boxes=rescaled_boxes,
-        patch_save_dir="patches/detected_objects",
-        patch_size=(100, 100)
+        patch_save_dir=cropped_dir,
+        patch_size=patch_size
     )
     
-    logging.info(f"\n[main_pipeline] Classifying each segmented region and assessing ripeness...")
+    # Copy original image to images_dir
+    original_image_name = os.path.basename(input_image_path)
+    shutil.copy(input_image_path, os.path.join(images_dir, original_image_name))
+    logging.info(f"[main_pipeline] Original image copied to: {os.path.join(images_dir, original_image_name)}")
+    
+    logging.info(f"\n[main_pipeline] Classifying each segmented region...")
     results = classify_segmented_objects(
         image_rgb=image_source,
         boxes=rescaled_boxes,
@@ -531,73 +626,22 @@ def main_pipeline(input_image_path: str, reference_images: list, groundingdino_c
         vectorstore=vectorstore,
         chat=chat,
         top_k=1,  # Changed to top_k=1 as per classification requirement
-        use_lab=use_lab
+        use_lab=use_lab,
+        cropped_save_dir=cropped_dir,
+        patch_size=patch_size,
+        label_to_id_map=label_to_id_map,
+        target_objects=target_objects
     )
     
-    # Mapping from label to class ID
-    label_to_class_id = {
-        "Class 0 - Green": 0,
-        "Class 1 - Green Yellow": 1,
-        "Class 2 - <50% red": 2,
-        "Class 3 - > 50% red": 3,
-        "Class 4 - red": 4,
-        "Class 5 - purple/black": 5
-    }
-    
-    # Prepare data for YOLO export
-    class_ids = []
-    for result in results:
-        label = result["matches"][0]["label"] if result["matches"] else "Unknown"
-        class_id = label_to_class_id.get(label, -1)  # Assign -1 for unknown classes
-        if class_id == -1:
-            logging.warning(f"[WARNING] Unknown label '{label}' encountered. Skipping in YOLO export.")
-            continue  # Skip unknown classes
-        class_ids.append(class_id)
-    
-    # Get image dimensions
-    image_height, image_width, _ = image_source.shape
-    
-    # Define YOLO annotation file path
-    yolo_annotation_path = os.path.splitext(os.path.basename(input_image_path))[0] + ".txt"
-    
-    # Export to YOLO format
-    export_to_yolo(
-        output_txt_path=yolo_annotation_path,
-        boxes=rescaled_boxes,
-        class_ids=class_ids,
-        image_width=image_width,
-        image_height=image_height
+    logging.info(f"\n[main_pipeline] Annotating image with bounding boxes and labels...")
+    annotate_image(
+        image_rgb=image_source,
+        results=results,
+        output_image_path=os.path.join(processed_images_dir, original_image_name),
+        labels_dir=labels_dir,
+        W_orig=W_orig,
+        H_orig=H_orig
     )
-    
-    logging.info(f"\n[main_pipeline] Annotating image with bounding boxes, labels, and ripeness scores...")
-    annotated_frame = image_source.copy()
-    for result, rescaled_bbox in zip(results, rescaled_boxes):
-        x_min, y_min, x_max, y_max = rescaled_bbox
-        label = result["matches"][0]["label"] if result["matches"] else "Unknown"
-        ripeness = result.get("ripeness", "N/A")
-
-        # Draw bounding box
-        cv2.rectangle(annotated_frame, (x_min, y_min), (x_max, y_max), (255, 0, 0), 2)
-
-        # Prepare label with ripeness
-        label_with_ripeness = f"{label} | Ripeness: {ripeness}"
-
-        # Draw label
-        cv2.putText(
-            annotated_frame,
-            label_with_ripeness,
-            (x_min, max(y_min - 10, 0)),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.5,
-            (255, 255, 255),
-            1,
-            cv2.LINE_AA
-        )
-
-    # Save the annotated image
-    output_path = "output_annotated_with_classes.jpg"
-    cv2.imwrite(output_path, cv2.cvtColor(annotated_frame, cv2.COLOR_RGB2BGR))  # Convert RGB to BGR for saving
-    logging.info(f"[main_pipeline] Annotated image with classes and ripeness saved at: {output_path}")
 
 ##############################################################################
 # Helper Functions
@@ -611,81 +655,179 @@ def validate_bbox(bbox: list, image_width: int, image_height: int) -> list:
     y_max = max(0, min(y_max, image_height - 1))
     return [x_min, y_min, x_max, y_max]
 
-##############################################################################
-# Export Annotations to YOLO Format
-##############################################################################
-def export_to_yolo(output_txt_path: str, boxes: list, class_ids: list, image_width: int, image_height: int):
-    """
-    Export bounding boxes and class IDs to YOLO format.
+def get_class_id(label: str, label_to_id_map: dict) -> int:
+    """Map label to a class ID using the provided mapping."""
+    return label_to_id_map.get(label, len(label_to_id_map))  # Default to a new ID if label not found
 
+def determine_label_from_config(config_path: str) -> list:
+    """
+    Read the configuration CSV file and return a list of (image_path, label) tuples.
+    
     Parameters:
-        output_txt_path (str): Path to the output YOLO annotation file.
-        boxes (list): List of bounding boxes in the format [x_min, y_min, x_max, y_max].
-        class_ids (list): List of class IDs corresponding to each bounding box.
-        image_width (int): Width of the image.
-        image_height (int): Height of the image.
+        config_path (str): Path to the configuration CSV file.
+    
+    Returns:
+        list: List of tuples containing image paths and their corresponding labels.
     """
-    with open(output_txt_path, 'w') as f:
-        for bbox, class_id in zip(boxes, class_ids):
-            x_min, y_min, x_max, y_max = bbox
-            # Calculate YOLO format values
-            x_center = (x_min + x_max) / 2 / image_width
-            y_center = (y_min + y_max) / 2 / image_height
-            width = (x_max - x_min) / image_width
-            height = (y_max - y_min) / image_height
-            # Ensure values are between 0 and 1
-            x_center = min(max(x_center, 0), 1)
-            y_center = min(max(y_center, 0), 1)
-            width = min(max(width, 0), 1)
-            height = min(max(height, 0), 1)
-            # Write to file
-            f.write(f"{class_id} {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
-    logging.info(f"[INFO] YOLO annotations saved at: {output_txt_path}")
+    reference_images = []
+    with open(config_path, mode='r', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            image_filename = row['image_filename'].strip()
+            label = row['label'].strip()
+            reference_images.append((image_filename, label))
+    return reference_images
 
 ##############################################################################
-# Main Execution
+# Argument Parser
+##############################################################################
+def parse_arguments():
+    parser = argparse.ArgumentParser(description="Ripeness Assessment Script")
+    parser.add_argument(
+        "--config_file",
+        type=str,
+        required=True,
+        help="Path to the configuration CSV file (conf.txt)."
+    )
+    parser.add_argument(
+        "--reference_images_folder",
+        type=str,
+        required=True,
+        help="Path to the folder containing reference images."
+    )
+    parser.add_argument(
+        "--input_images_folder",
+        type=str,
+        required=True,
+        help="Path to the folder containing input images to be processed."
+    )
+    parser.add_argument(
+        "--output_folder",
+        type=str,
+        required=True,
+        help="Path to the output folder where results will be saved."
+    )
+    parser.add_argument(
+        "--groundingdino_config",
+        type=str,
+        required=True,
+        help="Path to the GroundingDINO configuration file."
+    )
+    parser.add_argument(
+        "--groundingdino_weights",
+        type=str,
+        required=True,
+        help="Path to the GroundingDINO weights file."
+    )
+    parser.add_argument(
+        "--clip_model_dir",
+        type=str,
+        required=True,
+        help="Path to the local CLIP model directory."
+    )
+    parser.add_argument(
+        "--prompt_file",
+        type=str,
+        default=None,
+        help="Path to the text file containing the custom prompt for GPT-4."
+    )
+    parser.add_argument(
+        "--openai_key",
+        type=str,
+        default=None,
+        help="OpenAI API key. If not provided, GPT-based ripeness assessment will be skipped."
+    )
+    parser.add_argument(
+        "--use_lab",
+        action='store_true',
+        help="Use LAB color space for embeddings."
+    )
+    parser.add_argument(
+        "--patch_width",
+        type=int,
+        default=100,
+        help="Width of the patch to extract from the center of mass."
+    )
+    parser.add_argument(
+        "--patch_height",
+        type=int,
+        default=100,
+        help="Height of the patch to extract from the center of mass."
+    )
+    parser.add_argument(
+        "--gpt_model",
+        type=str,
+        default="gpt-4",
+        help="GPT model to use for ripeness assessment (e.g., 'gpt-4')."
+    )
+    parser.add_argument(
+        "--target_objects",
+        nargs='+',
+        required=True,
+        help="List of target objects to assess (e.g., 'olive fruit' 'apple')."
+    )
+    return parser.parse_args()
+
+##############################################################################
+# MAIN EXECUTION
+##############################################################################
+def main():
+    args = parse_arguments()
+
+    # Read reference images and their labels from config file
+    reference_images = determine_label_from_config(args.config_file)
+    
+    if not reference_images:
+        logging.error("[ERROR] No reference images found in the configuration file.")
+        exit(1)
+
+    # Prepend the reference_images_folder path to each image filename
+    reference_images = [(os.path.join(args.reference_images_folder, img), label) for img, label in reference_images]
+
+    # Create a mapping from labels to unique class IDs
+    unique_labels = sorted(list(set([label for _, label in reference_images])))
+    label_to_id_map = {label: idx for idx, label in enumerate(unique_labels)}
+    logging.info(f"[Main] Label to Class ID Mapping: {label_to_id_map}")
+
+    # Read custom prompt if provided; else, use target_objects as default prompt
+    if args.prompt_file:
+        if os.path.exists(args.prompt_file):
+            with open(args.prompt_file, "r", encoding='utf-8') as prompt_f:
+                custom_prompt = prompt_f.read()
+            logging.info(f"[Main] Custom prompt loaded from {args.prompt_file}")
+        else:
+            logging.error(f"[ERROR] Prompt file not found: {args.prompt_file}")
+            custom_prompt = " ".join(args.target_objects)  # Fallback to target_objects as prompt
+    else:
+        custom_prompt = " ".join(args.target_objects)  # Use the target_objects as default prompt
+
+    # Define patch size
+    patch_size = (args.patch_width, args.patch_height)
+    logging.info(f"[Main] Using patch size: Width={patch_size[0]}, Height={patch_size[1]}")
+
+    # Iterate over each input image and process
+    for root, dirs, files in os.walk(args.input_images_folder):
+        for file in files:
+            if file.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):
+                input_image_path = os.path.join(root, file)
+                logging.info(f"\n[Main] Processing image: {input_image_path}")
+                main_pipeline(
+                    input_image_path=input_image_path,
+                    reference_images=reference_images,
+                    groundingdino_config=args.groundingdino_config,
+                    groundingdino_weights=args.groundingdino_weights,
+                    clip_model_dir=args.clip_model_dir,
+                    output_folder=args.output_folder,
+                    prompt=custom_prompt,  # Pass the resolved prompt
+                    openai_key=args.openai_key,
+                    use_lab=args.use_lab,
+                    patch_size=patch_size,
+                    label_to_id_map=label_to_id_map,
+                    target_objects=args.target_objects
+                )
+
+##############################################################################
+# Entry Point
 ##############################################################################
 if __name__ == "__main__":
-    # Define reference images with their labels
-    reference_images = [
-        ("class_0_img1.png", "Class 0 - Green"),
-        ("class_0_img2.png", "Class 0 - Green"),
-        ("class_0_img3.png", "Class 0 - Green"),
-        ("class_0_img4.png", "Class 0 - Green"),
-        ("class_1_img1.png", "Class 1 - Green Yellow"),
-        ("class_1_img2.png", "Class 1 - Green Yellow"),
-        ("class_1_img3.png", "Class 1 - Green Yellow"),
-        ("class_1_img4.png", "Class 1 - Green Yellow"),
-        ("class_2_img1.png", "Class 2 - <50% red"),
-        ("class_2_img2.png", "Class 2 - <50% red"),
-        ("class_2_img3.png", "Class 2 - <50% red"),
-        ("class_2_img4.png", "Class 2 - <50% red"),
-        ("class_3_img1.png", "Class 3 - > 50% red"),
-        ("class_3_img2.png", "Class 3 - > 50% red"),
-        ("class_3_img3.png", "Class 3 - > 50% red"),
-        ("class_3_img4.png", "Class 3 - > 50% red"),
-        ("class_4_img1.png", "Class 4 - red"),
-        ("class_4_img2.png", "Class 4 - red"),
-        ("class_4_img3.png", "Class 4 - red"),
-        ("class_4_img4.png", "Class 4 - red"),
-        ("class_5_img1.png", "Class 5 - purple/black"),
-        ("class_5_img2.png", "Class 5 - purple/black"),
-        ("class_5_img3.png", "Class 5 - purple/black"),
-        ("class_5_img4.png", "Class 5 - purple/black"),
-    ]
-    
-    # Define GroundingDINO configuration and weights paths
-    groundingdino_config = "/Users/macbookpro/Documents/Projects/kws/GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py"
-    groundingdino_weights = "/Users/macbookpro/Documents/Projects/kws/weights/groundingdino_swint_ogc.pth"
-
-    # Define input image path
-    input_image_path = "/Users/macbookpro/Documents/Projects/phd/roboflow/no_aug/h1_asis/consolidado_multiclasse-4/train/images/IMG_3111_jpeg.rf.b4156c5076b9dd9827809c01ffcca46a.jpg"
-
-    # Run the pipeline
-    main_pipeline(
-        input_image_path=input_image_path,
-        reference_images=reference_images,
-        groundingdino_config=groundingdino_config,
-        groundingdino_weights=groundingdino_weights,
-        use_lab=True
-    )
+    main()
