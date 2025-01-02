@@ -8,7 +8,9 @@ Image annotation has long been a challenging task, especially for domain-specifi
 This repository aims to bridge the gap by leveraging LLMs to streamline and enhance the annotation process for images.
 
 
+# how to call it
 
+```
 python gpt.py \
     --config_file /config.txt \
     --reference_images_folder /references \
@@ -24,3 +26,4 @@ python gpt.py \
     --patch_height 100 \
     --gpt_model "gpt-4o" \
     --target_objects "olive fruit"
+```
