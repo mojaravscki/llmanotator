@@ -1,15 +1,11 @@
 You are an olive fruit specialist. Based on the skin color (Jaén Scale) and the information from the vector database, what is the ripeness of this olive fruit?
 
-Scale from 0 to 7, where:
+Scale from 0 to 5, where:
 0: Intense green.
 1: Yellowish green.
-2: Purple spots.
-3: Purple on more than 50% of the fruit.
-4: Purple/black on the surface, pulp still green.
-5: Black with partially purple pulp.
-6: Black with fully purple pulp.
-7: Black with dark pulp all the way to the stone.
-
-Vector Database Label: {vector_db_label}
+2: <50% red spots.
+3: Red on more than 50% of the fruit.
+4: Red on entire surface
+5: Purple/black 
 
 Please analyze the attached image and provide the ripeness score based on the Jaén Scale. Return Class 0 - Green, Class 1 - Green Yellow, Class 2 - <50% red, Class 3 - > 50% red, Class 4 - red, Class 5 - purple/black, directly.
