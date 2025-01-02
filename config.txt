@@ -1,12 +1,12 @@
 image_filename,label
-class_0_img1.png,olive fruit Class 0 - Green
-class_0_img2.png,olive fruit Class 0 - Green
-class_0_img3.png,olive fruit Class 0 - Green
-class_0_img4.png,olive fruit Class 0 - Green
-class_1_img1.png,olive fruit Class 1 - Green Yellow
-class_1_img2.png,olive fruit Class 1 - Green Yellow
-class_1_img3.png,olive fruit Class 1 - Green Yellow
-class_1_img4.png,olive fruit Class 1 - Green Yellow
+class_0_img1.png,olive fruit Class 0 - Intense green.
+class_0_img2.png,olive fruit Class 0 - Intense green.
+class_0_img3.png,olive fruit Class 0 - Intense green.
+class_0_img4.png,olive fruit Class 0 - Intense green.
+class_1_img1.png,olive fruit Class 1 - Yellowish green
+class_1_img2.png,olive fruit Class 1 - Yellowish green
+class_1_img3.png,olive fruit Class 1 - Yellowish green
+class_1_img4.png,olive fruit Class 1 - Yellowish green
 class_2_img1.png,olive fruit Class 2 - <50% red
 class_2_img2.png,olive fruit Class 2 - <50% red
 class_2_img3.png,olive fruit Class 2 - <50% red
