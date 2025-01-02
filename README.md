@@ -7,7 +7,7 @@ Image annotation has long been a challenging task, especially for domain-specifi
 
 This repository aims to bridge the gap by leveraging LLMs to streamline and enhance the annotation process for images.
 
-#HOW TO INSTALL
+# HOW TO INSTALL
 
 ## create conda env
 
@@ -38,7 +38,7 @@ pip install -r requirements.txt
 ```
 
 
-## how to call it
+# How to use
 
 ```
 python gpt.py \
