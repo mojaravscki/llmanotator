@@ -7,20 +7,38 @@ Image annotation has long been a challenging task, especially for domain-specifi
 
 This repository aims to bridge the gap by leveraging LLMs to streamline and enhance the annotation process for images.
 
+#HOW TO INSTALL
 
-# create conda env
+## create conda env
 
 ```
 conda create --name myenv python=3.10
 ```
 
-# git clone env
+## git clone env
 ```
 git clone https://github.com/mojaravscki/llmanotator
 
 ```
 
-# how to call it
+## download groundingdino_swint_ogc.pth
+
+```
+mkdir weights
+cd weights
+curl -L -o groundingdino_swint_ogc.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth
+```
+
+
+## download groundingdino_swint_ogc.pth
+
+```
+cd ..
+pip install -r requirements.txt
+```
+
+
+## how to call it
 
 ```
 python gpt.py \
