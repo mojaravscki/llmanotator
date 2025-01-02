@@ -1,0 +1,1484 @@
+2025-01-02 17:38:01,710 [INFO] [Main] Label to Class ID Mapping: {'olive fruit Class 0 - Green': 0, 'olive fruit Class 1 - Green Yellow': 1, 'olive fruit Class 2 - <50% red': 2, 'olive fruit Class 3 - > 50% red': 3, 'olive fruit Class 4 - red': 4, 'olive fruit Class 5 - purple/black': 5}
+2025-01-02 17:38:01,710 [INFO] [Main] Custom prompt loaded from prompt.txt
+2025-01-02 17:38:01,710 [INFO] [Main] Using patch size: (150, 150)
+2025-01-02 17:38:01,710 [INFO] 
+[Main] Loading GroundingDINO model...
+2025-01-02 17:38:01,720 [INFO] [load_groundingdino_model] Using device: mps
+2025-01-02 17:38:03,146 [INFO] 
+[Main] Loading local CLIP model...
+2025-01-02 17:38:03,146 [INFO] [load_clip_model] Using device: mps
+2025-01-02 17:38:03,752 [INFO] 
+[Main] Building or loading vector store from reference images...
+2025-01-02 17:38:03,752 [INFO] 
+[build_reference_vectorstore] Loading reference #0: references/class_0_img1.png
+2025-01-02 17:38:03,762 [INFO] [INFO] Original patch saved at: output/vector_db/class_0_img1_crop0_original.png
+2025-01-02 17:38:04,024 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img1_crop0_aug0.png
+2025-01-02 17:38:04,052 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img1_crop0_aug1.png
+2025-01-02 17:38:04,081 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img1_crop0_aug2.png
+2025-01-02 17:38:04,108 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img1_crop0_aug3.png
+2025-01-02 17:38:04,136 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img1_crop0_aug4.png
+2025-01-02 17:38:04,163 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img1_crop0_aug5.png
+2025-01-02 17:38:04,189 [INFO] 
+[build_reference_vectorstore] Loading reference #1: references/class_0_img2.png
+2025-01-02 17:38:04,197 [INFO] [INFO] Original patch saved at: output/vector_db/class_0_img2_crop1_original.png
+2025-01-02 17:38:04,230 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img2_crop1_aug0.png
+2025-01-02 17:38:04,261 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img2_crop1_aug1.png
+2025-01-02 17:38:04,292 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img2_crop1_aug2.png
+2025-01-02 17:38:04,323 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img2_crop1_aug3.png
+2025-01-02 17:38:04,354 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img2_crop1_aug4.png
+2025-01-02 17:38:04,384 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img2_crop1_aug5.png
+2025-01-02 17:38:04,408 [INFO] 
+[build_reference_vectorstore] Loading reference #2: references/class_0_img3.png
+2025-01-02 17:38:04,417 [INFO] [INFO] Original patch saved at: output/vector_db/class_0_img3_crop2_original.png
+2025-01-02 17:38:04,447 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img3_crop2_aug0.png
+2025-01-02 17:38:04,478 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img3_crop2_aug1.png
+2025-01-02 17:38:04,508 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img3_crop2_aug2.png
+2025-01-02 17:38:04,536 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img3_crop2_aug3.png
+2025-01-02 17:38:04,566 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img3_crop2_aug4.png
+2025-01-02 17:38:04,595 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img3_crop2_aug5.png
+2025-01-02 17:38:04,618 [INFO] 
+[build_reference_vectorstore] Loading reference #3: references/class_0_img4.png
+2025-01-02 17:38:04,625 [INFO] [INFO] Original patch saved at: output/vector_db/class_0_img4_crop3_original.png
+2025-01-02 17:38:04,654 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img4_crop3_aug0.png
+2025-01-02 17:38:04,683 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img4_crop3_aug1.png
+2025-01-02 17:38:04,713 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img4_crop3_aug2.png
+2025-01-02 17:38:04,743 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img4_crop3_aug3.png
+2025-01-02 17:38:04,774 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img4_crop3_aug4.png
+2025-01-02 17:38:04,806 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_0_img4_crop3_aug5.png
+2025-01-02 17:38:04,831 [INFO] 
+[build_reference_vectorstore] Loading reference #4: references/class_1_img1.png
+2025-01-02 17:38:04,837 [INFO] [INFO] Original patch saved at: output/vector_db/class_1_img1_crop4_original.png
+2025-01-02 17:38:04,865 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img1_crop4_aug0.png
+2025-01-02 17:38:04,893 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img1_crop4_aug1.png
+2025-01-02 17:38:04,921 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img1_crop4_aug2.png
+2025-01-02 17:38:04,949 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img1_crop4_aug3.png
+2025-01-02 17:38:04,976 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img1_crop4_aug4.png
+2025-01-02 17:38:05,004 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img1_crop4_aug5.png
+2025-01-02 17:38:05,029 [INFO] 
+[build_reference_vectorstore] Loading reference #5: references/class_1_img2.png
+2025-01-02 17:38:05,036 [INFO] [INFO] Original patch saved at: output/vector_db/class_1_img2_crop5_original.png
+2025-01-02 17:38:05,067 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img2_crop5_aug0.png
+2025-01-02 17:38:05,096 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img2_crop5_aug1.png
+2025-01-02 17:38:05,126 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img2_crop5_aug2.png
+2025-01-02 17:38:05,155 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img2_crop5_aug3.png
+2025-01-02 17:38:05,187 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img2_crop5_aug4.png
+2025-01-02 17:38:05,215 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img2_crop5_aug5.png
+2025-01-02 17:38:05,240 [INFO] 
+[build_reference_vectorstore] Loading reference #6: references/class_1_img3.png
+2025-01-02 17:38:05,248 [INFO] [INFO] Original patch saved at: output/vector_db/class_1_img3_crop6_original.png
+2025-01-02 17:38:05,278 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img3_crop6_aug0.png
+2025-01-02 17:38:05,310 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img3_crop6_aug1.png
+2025-01-02 17:38:05,339 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img3_crop6_aug2.png
+2025-01-02 17:38:05,370 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img3_crop6_aug3.png
+2025-01-02 17:38:05,400 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img3_crop6_aug4.png
+2025-01-02 17:38:05,430 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img3_crop6_aug5.png
+2025-01-02 17:38:05,454 [INFO] 
+[build_reference_vectorstore] Loading reference #7: references/class_1_img4.png
+2025-01-02 17:38:05,461 [INFO] [INFO] Original patch saved at: output/vector_db/class_1_img4_crop7_original.png
+2025-01-02 17:38:05,491 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img4_crop7_aug0.png
+2025-01-02 17:38:05,522 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img4_crop7_aug1.png
+2025-01-02 17:38:05,555 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img4_crop7_aug2.png
+2025-01-02 17:38:05,584 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img4_crop7_aug3.png
+2025-01-02 17:38:05,615 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img4_crop7_aug4.png
+2025-01-02 17:38:05,645 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_1_img4_crop7_aug5.png
+2025-01-02 17:38:05,669 [INFO] 
+[build_reference_vectorstore] Loading reference #8: references/class_2_img1.png
+2025-01-02 17:38:05,675 [INFO] [INFO] Original patch saved at: output/vector_db/class_2_img1_crop8_original.png
+2025-01-02 17:38:05,705 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img1_crop8_aug0.png
+2025-01-02 17:38:05,733 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img1_crop8_aug1.png
+2025-01-02 17:38:05,762 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img1_crop8_aug2.png
+2025-01-02 17:38:05,791 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img1_crop8_aug3.png
+2025-01-02 17:38:05,820 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img1_crop8_aug4.png
+2025-01-02 17:38:05,848 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img1_crop8_aug5.png
+2025-01-02 17:38:05,872 [INFO] 
+[build_reference_vectorstore] Loading reference #9: references/class_2_img2.png
+2025-01-02 17:38:05,879 [INFO] [INFO] Original patch saved at: output/vector_db/class_2_img2_crop9_original.png
+2025-01-02 17:38:05,908 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img2_crop9_aug0.png
+2025-01-02 17:38:05,937 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img2_crop9_aug1.png
+2025-01-02 17:38:05,967 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img2_crop9_aug2.png
+2025-01-02 17:38:05,995 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img2_crop9_aug3.png
+2025-01-02 17:38:06,025 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img2_crop9_aug4.png
+2025-01-02 17:38:06,055 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img2_crop9_aug5.png
+2025-01-02 17:38:06,080 [INFO] 
+[build_reference_vectorstore] Loading reference #10: references/class_2_img3.png
+2025-01-02 17:38:06,086 [INFO] [INFO] Original patch saved at: output/vector_db/class_2_img3_crop10_original.png
+2025-01-02 17:38:06,116 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img3_crop10_aug0.png
+2025-01-02 17:38:06,145 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img3_crop10_aug1.png
+2025-01-02 17:38:06,174 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img3_crop10_aug2.png
+2025-01-02 17:38:06,203 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img3_crop10_aug3.png
+2025-01-02 17:38:06,232 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img3_crop10_aug4.png
+2025-01-02 17:38:06,261 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img3_crop10_aug5.png
+2025-01-02 17:38:06,285 [INFO] 
+[build_reference_vectorstore] Loading reference #11: references/class_2_img4.png
+2025-01-02 17:38:06,290 [INFO] [INFO] Original patch saved at: output/vector_db/class_2_img4_crop11_original.png
+2025-01-02 17:38:06,317 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img4_crop11_aug0.png
+2025-01-02 17:38:06,345 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img4_crop11_aug1.png
+2025-01-02 17:38:06,373 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img4_crop11_aug2.png
+2025-01-02 17:38:06,401 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img4_crop11_aug3.png
+2025-01-02 17:38:06,429 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img4_crop11_aug4.png
+2025-01-02 17:38:06,458 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_2_img4_crop11_aug5.png
+2025-01-02 17:38:06,483 [INFO] 
+[build_reference_vectorstore] Loading reference #12: references/class_3_img1.png
+2025-01-02 17:38:06,490 [INFO] [INFO] Original patch saved at: output/vector_db/class_3_img1_crop12_original.png
+2025-01-02 17:38:06,521 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img1_crop12_aug0.png
+2025-01-02 17:38:06,551 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img1_crop12_aug1.png
+2025-01-02 17:38:06,582 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img1_crop12_aug2.png
+2025-01-02 17:38:06,613 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img1_crop12_aug3.png
+2025-01-02 17:38:06,643 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img1_crop12_aug4.png
+2025-01-02 17:38:06,673 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img1_crop12_aug5.png
+2025-01-02 17:38:06,698 [INFO] 
+[build_reference_vectorstore] Loading reference #13: references/class_3_img2.png
+2025-01-02 17:38:06,705 [INFO] [INFO] Original patch saved at: output/vector_db/class_3_img2_crop13_original.png
+2025-01-02 17:38:06,735 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img2_crop13_aug0.png
+2025-01-02 17:38:06,765 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img2_crop13_aug1.png
+2025-01-02 17:38:06,795 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img2_crop13_aug2.png
+2025-01-02 17:38:06,824 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img2_crop13_aug3.png
+2025-01-02 17:38:06,854 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img2_crop13_aug4.png
+2025-01-02 17:38:06,883 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img2_crop13_aug5.png
+2025-01-02 17:38:06,907 [INFO] 
+[build_reference_vectorstore] Loading reference #14: references/class_3_img3.png
+2025-01-02 17:38:06,915 [INFO] [INFO] Original patch saved at: output/vector_db/class_3_img3_crop14_original.png
+2025-01-02 17:38:06,946 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img3_crop14_aug0.png
+2025-01-02 17:38:06,979 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img3_crop14_aug1.png
+2025-01-02 17:38:07,011 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img3_crop14_aug2.png
+2025-01-02 17:38:07,042 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img3_crop14_aug3.png
+2025-01-02 17:38:07,073 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img3_crop14_aug4.png
+2025-01-02 17:38:07,104 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img3_crop14_aug5.png
+2025-01-02 17:38:07,128 [INFO] 
+[build_reference_vectorstore] Loading reference #15: references/class_3_img4.png
+2025-01-02 17:38:07,136 [INFO] [INFO] Original patch saved at: output/vector_db/class_3_img4_crop15_original.png
+2025-01-02 17:38:07,166 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img4_crop15_aug0.png
+2025-01-02 17:38:07,198 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img4_crop15_aug1.png
+2025-01-02 17:38:07,228 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img4_crop15_aug2.png
+2025-01-02 17:38:07,259 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img4_crop15_aug3.png
+2025-01-02 17:38:07,290 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img4_crop15_aug4.png
+2025-01-02 17:38:07,319 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_3_img4_crop15_aug5.png
+2025-01-02 17:38:07,344 [INFO] 
+[build_reference_vectorstore] Loading reference #16: references/class_4_img1.png
+2025-01-02 17:38:07,351 [INFO] [INFO] Original patch saved at: output/vector_db/class_4_img1_crop16_original.png
+2025-01-02 17:38:07,380 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img1_crop16_aug0.png
+2025-01-02 17:38:07,409 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img1_crop16_aug1.png
+2025-01-02 17:38:07,440 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img1_crop16_aug2.png
+2025-01-02 17:38:07,469 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img1_crop16_aug3.png
+2025-01-02 17:38:07,498 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img1_crop16_aug4.png
+2025-01-02 17:38:07,527 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img1_crop16_aug5.png
+2025-01-02 17:38:07,552 [INFO] 
+[build_reference_vectorstore] Loading reference #17: references/class_4_img2.png
+2025-01-02 17:38:07,558 [INFO] [INFO] Original patch saved at: output/vector_db/class_4_img2_crop17_original.png
+2025-01-02 17:38:07,587 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img2_crop17_aug0.png
+2025-01-02 17:38:07,617 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img2_crop17_aug1.png
+2025-01-02 17:38:07,644 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img2_crop17_aug2.png
+2025-01-02 17:38:07,673 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img2_crop17_aug3.png
+2025-01-02 17:38:07,702 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img2_crop17_aug4.png
+2025-01-02 17:38:07,730 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img2_crop17_aug5.png
+2025-01-02 17:38:07,754 [INFO] 
+[build_reference_vectorstore] Loading reference #18: references/class_4_img3.png
+2025-01-02 17:38:07,760 [INFO] [INFO] Original patch saved at: output/vector_db/class_4_img3_crop18_original.png
+2025-01-02 17:38:07,789 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img3_crop18_aug0.png
+2025-01-02 17:38:07,819 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img3_crop18_aug1.png
+2025-01-02 17:38:07,848 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img3_crop18_aug2.png
+2025-01-02 17:38:07,875 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img3_crop18_aug3.png
+2025-01-02 17:38:07,905 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img3_crop18_aug4.png
+2025-01-02 17:38:07,932 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img3_crop18_aug5.png
+2025-01-02 17:38:07,957 [INFO] 
+[build_reference_vectorstore] Loading reference #19: references/class_4_img4.png
+2025-01-02 17:38:07,965 [INFO] [INFO] Original patch saved at: output/vector_db/class_4_img4_crop19_original.png
+2025-01-02 17:38:07,994 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img4_crop19_aug0.png
+2025-01-02 17:38:08,025 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img4_crop19_aug1.png
+2025-01-02 17:38:08,056 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img4_crop19_aug2.png
+2025-01-02 17:38:08,086 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img4_crop19_aug3.png
+2025-01-02 17:38:08,116 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img4_crop19_aug4.png
+2025-01-02 17:38:08,147 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_4_img4_crop19_aug5.png
+2025-01-02 17:38:08,172 [INFO] 
+[build_reference_vectorstore] Loading reference #20: references/class_5_img1.png
+2025-01-02 17:38:08,179 [INFO] [INFO] Original patch saved at: output/vector_db/class_5_img1_crop20_original.png
+2025-01-02 17:38:08,208 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img1_crop20_aug0.png
+2025-01-02 17:38:08,236 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img1_crop20_aug1.png
+2025-01-02 17:38:08,265 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img1_crop20_aug2.png
+2025-01-02 17:38:08,294 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img1_crop20_aug3.png
+2025-01-02 17:38:08,323 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img1_crop20_aug4.png
+2025-01-02 17:38:08,353 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img1_crop20_aug5.png
+2025-01-02 17:38:08,377 [INFO] 
+[build_reference_vectorstore] Loading reference #21: references/class_5_img2.png
+2025-01-02 17:38:08,384 [INFO] [INFO] Original patch saved at: output/vector_db/class_5_img2_crop21_original.png
+2025-01-02 17:38:08,414 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img2_crop21_aug0.png
+2025-01-02 17:38:08,442 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img2_crop21_aug1.png
+2025-01-02 17:38:08,471 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img2_crop21_aug2.png
+2025-01-02 17:38:08,501 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img2_crop21_aug3.png
+2025-01-02 17:38:08,530 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img2_crop21_aug4.png
+2025-01-02 17:38:08,559 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img2_crop21_aug5.png
+2025-01-02 17:38:08,584 [INFO] 
+[build_reference_vectorstore] Loading reference #22: references/class_5_img3.png
+2025-01-02 17:38:08,591 [INFO] [INFO] Original patch saved at: output/vector_db/class_5_img3_crop22_original.png
+2025-01-02 17:38:08,621 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img3_crop22_aug0.png
+2025-01-02 17:38:08,651 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img3_crop22_aug1.png
+2025-01-02 17:38:08,681 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img3_crop22_aug2.png
+2025-01-02 17:38:08,711 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img3_crop22_aug3.png
+2025-01-02 17:38:08,741 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img3_crop22_aug4.png
+2025-01-02 17:38:08,771 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img3_crop22_aug5.png
+2025-01-02 17:38:08,796 [INFO] 
+[build_reference_vectorstore] Loading reference #23: references/class_5_img4.png
+2025-01-02 17:38:08,803 [INFO] [INFO] Original patch saved at: output/vector_db/class_5_img4_crop23_original.png
+2025-01-02 17:38:08,833 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img4_crop23_aug0.png
+2025-01-02 17:38:08,864 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img4_crop23_aug1.png
+2025-01-02 17:38:08,893 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img4_crop23_aug2.png
+2025-01-02 17:38:08,923 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img4_crop23_aug3.png
+2025-01-02 17:38:08,953 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img4_crop23_aug4.png
+2025-01-02 17:38:08,982 [INFO] [INFO] Augmented patch saved at: output/vector_db/class_5_img4_crop23_aug5.png
+2025-01-02 17:38:09,006 [INFO] 
+[build_reference_vectorstore] Building FAISS index from 168 items.
+2025-01-02 17:38:09,007 [INFO] Loading faiss.
+2025-01-02 17:38:09,017 [INFO] Successfully loaded faiss.
+2025-01-02 17:38:09,022 [INFO] [build_reference_vectorstore] FAISS index and embeddings metadata saved in output/vector_db.
+2025-01-02 17:38:09,023 [INFO] 
+[Main] Initializing ChatOpenAI model...
+2025-01-02 17:38:09,063 [INFO] [Main] ChatOpenAI initialized successfully.
+2025-01-02 17:38:09,063 [INFO] 
+[Main] Loading SAM model for polygon generation...
+2025-01-02 17:38:09,063 [INFO] [load_sam_model] Using MPS (Apple Silicon) backend.
+2025-01-02 17:38:11,865 [INFO] [load_sam_model] SAM model 'vit_h' loaded successfully.
+2025-01-02 17:38:11,866 [INFO] [load_sam_model] SAM Predictor initialized successfully.
+2025-01-02 17:38:11,866 [INFO] 
+[Main] Processing image: input/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 17:38:11,866 [INFO] 
+[main_pipeline] Segmenting objects in input image...
+2025-01-02 17:38:15,764 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 17:38:15,765 [INFO] Box 0: tensor([0.5007, 0.4251, 0.6735, 0.6341])
+2025-01-02 17:38:15,765 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 17:38:15,765 [INFO] 
+[process_and_save_input_image_patches] Loading input image: input/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 17:38:15,780 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571_crop0.png for Bounding Box #0
+2025-01-02 17:38:15,790 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571_patch0.png for Bounding Box #0
+2025-01-02 17:38:15,790 [INFO] [main_pipeline] Original image copied to: output/images/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 17:38:15,790 [INFO] 
+[main_pipeline] Classifying each segmented region...
+2025-01-02 17:38:15,839 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 1 - Green Yellow
+2025-01-02 17:38:17,694 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:38:17,707 [INFO] ################# [GPT] Box #0 Label: olive fruit Class 1 - Green Yellow, Maturity: Based on the image and the vector database label "Class 1 - Green Yellow," the ripeness of the olive fruit on the Jaén Scale corresponds to:
+
+1: Yellowish green
+
+This indicates the fruit is in the early stages of ripeness.
+2025-01-02 17:38:17,707 [INFO] 
+[main_pipeline] Annotating image with bounding boxes, labels, and generating polygon masks...
+2025-01-02 17:38:22,257 [INFO] [annotate_image] Annotated image saved at: output/processed_images/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 17:38:22,258 [INFO] [annotate_image] YOLO labels (Vector DB) saved at: output/labels_vdb_bbox/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.txt
+2025-01-02 17:38:22,258 [INFO] [annotate_image] YOLO labels (Orchestrator) saved at: output/labels_gpt_bbox/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.txt
+2025-01-02 17:38:22,260 [INFO] [annotate_image] COCO polygon annotations (Vector DB) saved at: output/labels_vdb_polygon/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571_polygon_vdb.json
+2025-01-02 17:38:22,261 [INFO] [annotate_image] COCO polygon annotations (Orchestrator) saved at: output/labels_gpt_polygon/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571_polygon_orchestrator.json
+2025-01-02 17:38:22,262 [INFO] 
+[Main] Processing image: input/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 17:38:22,262 [INFO] 
+[main_pipeline] Segmenting objects in input image...
+2025-01-02 17:38:25,381 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 17:38:25,381 [INFO] Box 0: tensor([0.5163, 0.4898, 0.4981, 0.4246])
+2025-01-02 17:38:25,381 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 17:38:25,381 [INFO] 
+[process_and_save_input_image_patches] Loading input image: input/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 17:38:25,402 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e_crop0.png for Bounding Box #0
+2025-01-02 17:38:25,412 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e_patch0.png for Bounding Box #0
+2025-01-02 17:38:25,413 [INFO] [main_pipeline] Original image copied to: output/images/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 17:38:25,413 [INFO] 
+[main_pipeline] Classifying each segmented region...
+2025-01-02 17:38:25,458 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 1 - Green Yellow
+2025-01-02 17:38:27,754 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:38:27,757 [INFO] ################# [GPT] Box #0 Label: olive fruit Class 1 - Green Yellow, Maturity: Based on the vector database label "Class 1 - Green Yellow" and the attached image, the ripeness score of this olive fruit on the Jaén Scale is 1. This corresponds to Class 1 - Green Yellow.
+2025-01-02 17:38:27,757 [INFO] 
+[main_pipeline] Annotating image with bounding boxes, labels, and generating polygon masks...
+2025-01-02 17:38:30,919 [INFO] [annotate_image] Annotated image saved at: output/processed_images/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 17:38:30,919 [INFO] [annotate_image] YOLO labels (Vector DB) saved at: output/labels_vdb_bbox/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.txt
+2025-01-02 17:38:30,919 [INFO] [annotate_image] YOLO labels (Orchestrator) saved at: output/labels_gpt_bbox/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.txt
+2025-01-02 17:38:30,921 [INFO] [annotate_image] COCO polygon annotations (Vector DB) saved at: output/labels_vdb_polygon/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e_polygon_vdb.json
+2025-01-02 17:38:30,922 [INFO] [annotate_image] COCO polygon annotations (Orchestrator) saved at: output/labels_gpt_polygon/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e_polygon_orchestrator.json
+2025-01-02 17:38:30,923 [INFO] 
+[Main] Processing image: input/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 17:38:30,923 [INFO] 
+[main_pipeline] Segmenting objects in input image...
+2025-01-02 17:38:34,179 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 17:38:34,180 [INFO] Box 0: tensor([0.5169, 0.5101, 0.6024, 0.6366])
+2025-01-02 17:38:34,180 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 17:38:34,180 [INFO] 
+[process_and_save_input_image_patches] Loading input image: input/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 17:38:34,200 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9_crop0.png for Bounding Box #0
+2025-01-02 17:38:34,207 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9_patch0.png for Bounding Box #0
+2025-01-02 17:38:34,207 [INFO] [main_pipeline] Original image copied to: output/images/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 17:38:34,207 [INFO] 
+[main_pipeline] Classifying each segmented region...
+2025-01-02 17:38:34,277 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 17:38:36,662 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:38:36,664 [INFO] ################# [GPT] Box #0 Label: olive fruit Class 2 - <50% red, Maturity: Based on the Jaén Scale and the vector database label "Class 2 - <50% red," the olive fruit is at ripeness level 2: Purple spots.
+2025-01-02 17:38:36,665 [INFO] 
+[main_pipeline] Annotating image with bounding boxes, labels, and generating polygon masks...
+2025-01-02 17:38:39,897 [INFO] [annotate_image] Annotated image saved at: output/processed_images/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 17:38:39,898 [INFO] [annotate_image] YOLO labels (Vector DB) saved at: output/labels_vdb_bbox/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.txt
+2025-01-02 17:38:39,898 [INFO] [annotate_image] YOLO labels (Orchestrator) saved at: output/labels_gpt_bbox/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.txt
+2025-01-02 17:38:39,900 [INFO] [annotate_image] COCO polygon annotations (Vector DB) saved at: output/labels_vdb_polygon/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9_polygon_vdb.json
+2025-01-02 17:38:39,901 [INFO] [annotate_image] COCO polygon annotations (Orchestrator) saved at: output/labels_gpt_polygon/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9_polygon_orchestrator.json
+2025-01-02 17:38:39,902 [INFO] 
+[Main] Processing image: input/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 17:38:39,902 [INFO] 
+[main_pipeline] Segmenting objects in input image...
+2025-01-02 17:38:43,776 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 17:38:43,776 [INFO] Box 0: tensor([0.5068, 0.4521, 0.5052, 0.6029])
+2025-01-02 17:38:43,777 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 17:38:43,777 [INFO] 
+[process_and_save_input_image_patches] Loading input image: input/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 17:38:43,789 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy_crop0.png for Bounding Box #0
+2025-01-02 17:38:43,797 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy_patch0.png for Bounding Box #0
+2025-01-02 17:38:43,798 [INFO] [main_pipeline] Original image copied to: output/images/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 17:38:43,798 [INFO] 
+[main_pipeline] Classifying each segmented region...
+2025-01-02 17:38:43,844 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 17:38:46,265 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:38:46,268 [INFO] ################# [GPT] Box #0 Label: olive fruit Class 2 - <50% red, Maturity: Based on the provided image and the vector database label "olive fruit Class 2 - <50% red," the ripeness score on the Jaén Scale is 2. This corresponds to "Purple spots" on the fruit, indicating Class 2 - <50% red.
+2025-01-02 17:38:46,268 [INFO] 
+[main_pipeline] Annotating image with bounding boxes, labels, and generating polygon masks...
+2025-01-02 17:38:49,663 [INFO] [annotate_image] Annotated image saved at: output/processed_images/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 17:38:49,663 [INFO] [annotate_image] YOLO labels (Vector DB) saved at: output/labels_vdb_bbox/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.txt
+2025-01-02 17:38:49,663 [INFO] [annotate_image] YOLO labels (Orchestrator) saved at: output/labels_gpt_bbox/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.txt
+2025-01-02 17:38:49,664 [INFO] [annotate_image] COCO polygon annotations (Vector DB) saved at: output/labels_vdb_polygon/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy_polygon_vdb.json
+2025-01-02 17:38:49,665 [INFO] [annotate_image] COCO polygon annotations (Orchestrator) saved at: output/labels_gpt_polygon/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy_polygon_orchestrator.json
+2025-01-02 17:38:49,667 [INFO] 
+[Main] Processing image: input/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 17:38:49,667 [INFO] 
+[main_pipeline] Segmenting objects in input image...
+2025-01-02 17:38:52,780 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 17:38:52,780 [INFO] Box 0: tensor([0.5692, 0.4532, 0.5347, 0.6426])
+2025-01-02 17:38:52,780 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 17:38:52,780 [INFO] 
+[process_and_save_input_image_patches] Loading input image: input/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 17:38:52,813 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b_crop0.png for Bounding Box #0
+2025-01-02 17:38:52,823 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b_patch0.png for Bounding Box #0
+2025-01-02 17:38:52,824 [INFO] [main_pipeline] Original image copied to: output/images/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 17:38:52,824 [INFO] 
+[main_pipeline] Classifying each segmented region...
+2025-01-02 17:38:52,861 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 3 - > 50% red
+2025-01-02 17:38:55,679 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:38:55,682 [INFO] ################# [GPT] Box #0 Label: olive fruit Class 3 - > 50% red, Maturity: Based on the information provided, the vector database label "Class 3 - > 50% red" corresponds to the Jaén Scale score of 3: Purple on more than 50% of the fruit.
+
+Thus, the ripeness score is Class 3 - > 50% red.
+2025-01-02 17:38:55,682 [INFO] 
+[main_pipeline] Annotating image with bounding boxes, labels, and generating polygon masks...
+2025-01-02 17:38:58,888 [INFO] [annotate_image] Annotated image saved at: output/processed_images/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 17:38:58,888 [INFO] [annotate_image] YOLO labels (Vector DB) saved at: output/labels_vdb_bbox/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.txt
+2025-01-02 17:38:58,888 [INFO] [annotate_image] YOLO labels (Orchestrator) saved at: output/labels_gpt_bbox/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.txt
+2025-01-02 17:38:58,890 [INFO] [annotate_image] COCO polygon annotations (Vector DB) saved at: output/labels_vdb_polygon/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b_polygon_vdb.json
+2025-01-02 17:38:58,891 [INFO] [annotate_image] COCO polygon annotations (Orchestrator) saved at: output/labels_gpt_polygon/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b_polygon_orchestrator.json
+2025-01-02 17:38:58,892 [INFO] 
+[Main] Processing image: input/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 17:38:58,892 [INFO] 
+[main_pipeline] Segmenting objects in input image...
+2025-01-02 17:39:02,444 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 17:39:02,446 [INFO] Box 0: tensor([0.5144, 0.5286, 0.5482, 0.5551])
+2025-01-02 17:39:02,446 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 17:39:02,446 [INFO] 
+[process_and_save_input_image_patches] Loading input image: input/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 17:39:02,480 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf_crop0.png for Bounding Box #0
+2025-01-02 17:39:02,492 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf_patch0.png for Bounding Box #0
+2025-01-02 17:39:02,492 [INFO] [main_pipeline] Original image copied to: output/images/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 17:39:02,492 [INFO] 
+[main_pipeline] Classifying each segmented region...
+2025-01-02 17:39:02,530 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 17:39:06,255 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:39:06,258 [INFO] ################# [GPT] Box #0 Label: olive fruit Class 2 - <50% red, Maturity: Based on the provided image and the vector database label "Class 2 - <50% red," the ripeness score on the Jaén Scale would be:
+
+**2: Purple spots.**
+
+This corresponds to Class 2 in the classification system.
+2025-01-02 17:39:06,258 [INFO] 
+[main_pipeline] Annotating image with bounding boxes, labels, and generating polygon masks...
+2025-01-02 17:39:09,521 [INFO] [annotate_image] Annotated image saved at: output/processed_images/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 17:39:09,521 [INFO] [annotate_image] YOLO labels (Vector DB) saved at: output/labels_vdb_bbox/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.txt
+2025-01-02 17:39:09,521 [INFO] [annotate_image] YOLO labels (Orchestrator) saved at: output/labels_gpt_bbox/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.txt
+2025-01-02 17:39:09,523 [INFO] [annotate_image] COCO polygon annotations (Vector DB) saved at: output/labels_vdb_polygon/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf_polygon_vdb.json
+2025-01-02 17:39:09,524 [INFO] [annotate_image] COCO polygon annotations (Orchestrator) saved at: output/labels_gpt_polygon/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf_polygon_orchestrator.json
+2025-01-02 17:39:09,527 [INFO] 
+[Main] Processing image: input/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 17:39:09,527 [INFO] 
+[main_pipeline] Segmenting objects in input image...
+2025-01-02 17:39:13,019 [INFO] [main_pipeline] Detected 4 bounding boxes.
+2025-01-02 17:39:13,020 [INFO] Box 0: tensor([0.5828, 0.5258, 0.7110, 0.5148])
+2025-01-02 17:39:13,020 [INFO] Box 1: tensor([0.9066, 0.0776, 0.1868, 0.1549])
+2025-01-02 17:39:13,020 [INFO] Box 2: tensor([0.8452, 0.3272, 0.3101, 0.4125])
+2025-01-02 17:39:13,020 [INFO] Box 3: tensor([0.6122, 0.4997, 0.7748, 0.9997])
+2025-01-02 17:39:13,020 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 17:39:13,020 [INFO] 
+[process_and_save_input_image_patches] Loading input image: input/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 17:39:13,058 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_crop0.png for Bounding Box #0
+2025-01-02 17:39:13,065 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_patch0.png for Bounding Box #0
+2025-01-02 17:39:13,070 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_crop1.png for Bounding Box #1
+2025-01-02 17:39:13,075 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_patch1.png for Bounding Box #1
+2025-01-02 17:39:13,088 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_crop2.png for Bounding Box #2
+2025-01-02 17:39:13,098 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_patch2.png for Bounding Box #2
+2025-01-02 17:39:13,176 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_crop3.png for Bounding Box #3
+2025-01-02 17:39:13,183 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_patch3.png for Bounding Box #3
+2025-01-02 17:39:13,183 [INFO] [main_pipeline] Original image copied to: output/images/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 17:39:13,183 [INFO] 
+[main_pipeline] Classifying each segmented region...
+2025-01-02 17:39:13,239 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 17:39:15,314 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:39:15,316 [INFO] ################# [GPT] Box #0 Label: olive fruit Class 2 - <50% red, Maturity: Based on the vector database label "Class 2 - <50% red," the olive fruit corresponds to a ripeness score of 2 on the Jaén Scale, which means it has purple spots.
+2025-01-02 17:39:15,426 [INFO] ################# Vectordatabase: Box #1 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 17:39:18,546 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:39:18,549 [INFO] ################# [GPT] Box #1 Label: olive fruit Class 2 - <50% red, Maturity: I can't analyze the image, but based on the vector database label "Class 2 - <50% red," the olive fruit is at ripeness score 2 on the Jaén Scale. This corresponds to having purple spots.
+2025-01-02 17:39:18,665 [INFO] ################# Vectordatabase: Box #2 - Match 1: olive fruit Class 1 - Green Yellow
+2025-01-02 17:39:20,799 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:39:20,802 [INFO] ################# [GPT] Box #2 Label: olive fruit Class 1 - Green Yellow, Maturity: Based on the image and the vector database label "Class 1 - Green Yellow," the ripeness score on the Jaén Scale is 1: Yellowish green.
+2025-01-02 17:39:20,918 [INFO] ################# Vectordatabase: Box #3 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 17:39:22,503 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:39:22,506 [INFO] ################# [GPT] Box #3 Label: olive fruit Class 2 - <50% red, Maturity: Based on the vector database label "olive fruit Class 2 - <50% red," the ripeness score would be 2 on the Jaén Scale, which indicates purple spots.
+2025-01-02 17:39:22,506 [INFO] 
+[main_pipeline] Annotating image with bounding boxes, labels, and generating polygon masks...
+2025-01-02 17:40:10,879 [INFO] [annotate_image] Annotated image saved at: output/processed_images/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 17:40:10,881 [INFO] [annotate_image] YOLO labels (Vector DB) saved at: output/labels_vdb_bbox/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.txt
+2025-01-02 17:40:10,881 [INFO] [annotate_image] YOLO labels (Orchestrator) saved at: output/labels_gpt_bbox/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.txt
+2025-01-02 17:40:10,897 [INFO] [annotate_image] COCO polygon annotations (Vector DB) saved at: output/labels_vdb_polygon/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_polygon_vdb.json
+2025-01-02 17:40:10,912 [INFO] [annotate_image] COCO polygon annotations (Orchestrator) saved at: output/labels_gpt_polygon/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_polygon_orchestrator.json
+2025-01-02 17:40:10,915 [INFO] 
+[Main] Processing image: input/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 17:40:10,915 [INFO] 
+[main_pipeline] Segmenting objects in input image...
+2025-01-02 17:40:15,259 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 17:40:15,260 [INFO] Box 0: tensor([0.4576, 0.4323, 0.6001, 0.4928])
+2025-01-02 17:40:15,260 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 17:40:15,260 [INFO] 
+[process_and_save_input_image_patches] Loading input image: input/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 17:40:15,294 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c_crop0.png for Bounding Box #0
+2025-01-02 17:40:15,310 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c_patch0.png for Bounding Box #0
+2025-01-02 17:40:15,311 [INFO] [main_pipeline] Original image copied to: output/images/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 17:40:15,311 [INFO] 
+[main_pipeline] Classifying each segmented region...
+2025-01-02 17:40:15,371 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 1 - Green Yellow
+2025-01-02 17:40:19,187 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:40:19,190 [INFO] ################# [GPT] Box #0 Label: olive fruit Class 1 - Green Yellow, Maturity: Based on the image and the vector database label "olive fruit Class 1 - Green Yellow," the ripeness score on the Jaén Scale is 1: Yellowish green. This corresponds to Class 1 - Green Yellow.
+2025-01-02 17:40:19,190 [INFO] 
+[main_pipeline] Annotating image with bounding boxes, labels, and generating polygon masks...
+2025-01-02 17:40:36,021 [INFO] [annotate_image] Annotated image saved at: output/processed_images/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 17:40:36,022 [INFO] [annotate_image] YOLO labels (Vector DB) saved at: output/labels_vdb_bbox/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.txt
+2025-01-02 17:40:36,022 [INFO] [annotate_image] YOLO labels (Orchestrator) saved at: output/labels_gpt_bbox/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.txt
+2025-01-02 17:40:36,023 [INFO] [annotate_image] COCO polygon annotations (Vector DB) saved at: output/labels_vdb_polygon/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c_polygon_vdb.json
+2025-01-02 17:40:36,025 [INFO] [annotate_image] COCO polygon annotations (Orchestrator) saved at: output/labels_gpt_polygon/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c_polygon_orchestrator.json
+2025-01-02 17:40:36,025 [INFO] 
+[Main] Processing image: input/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 17:40:36,025 [INFO] 
+[main_pipeline] Segmenting objects in input image...
+2025-01-02 17:40:41,748 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 17:40:41,749 [INFO] Box 0: tensor([0.5696, 0.5091, 0.4930, 0.5319])
+2025-01-02 17:40:41,749 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 17:40:41,749 [INFO] 
+[process_and_save_input_image_patches] Loading input image: input/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 17:40:41,788 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e_crop0.png for Bounding Box #0
+2025-01-02 17:40:41,813 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e_patch0.png for Bounding Box #0
+2025-01-02 17:40:41,814 [INFO] [main_pipeline] Original image copied to: output/images/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 17:40:41,814 [INFO] 
+[main_pipeline] Classifying each segmented region...
+2025-01-02 17:40:42,167 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 3 - > 50% red
+2025-01-02 17:40:45,035 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:40:45,037 [INFO] ################# [GPT] Box #0 Label: olive fruit Class 3 - > 50% red, Maturity: Based on the information provided and the appearance of the olive, it falls under Class 3 - > 50% red.
+2025-01-02 17:40:45,038 [INFO] 
+[main_pipeline] Annotating image with bounding boxes, labels, and generating polygon masks...
+2025-01-02 17:40:59,510 [INFO] [annotate_image] Annotated image saved at: output/processed_images/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 17:40:59,511 [INFO] [annotate_image] YOLO labels (Vector DB) saved at: output/labels_vdb_bbox/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.txt
+2025-01-02 17:40:59,512 [INFO] [annotate_image] YOLO labels (Orchestrator) saved at: output/labels_gpt_bbox/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.txt
+2025-01-02 17:40:59,513 [INFO] [annotate_image] COCO polygon annotations (Vector DB) saved at: output/labels_vdb_polygon/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e_polygon_vdb.json
+2025-01-02 17:40:59,514 [INFO] [annotate_image] COCO polygon annotations (Orchestrator) saved at: output/labels_gpt_polygon/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e_polygon_orchestrator.json
+2025-01-02 17:40:59,516 [INFO] 
+[Main] Processing image: input/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 17:40:59,517 [INFO] 
+[main_pipeline] Segmenting objects in input image...
+2025-01-02 17:41:03,176 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 17:41:03,177 [INFO] Box 0: tensor([0.4539, 0.4180, 0.5291, 0.5803])
+2025-01-02 17:41:03,177 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 17:41:03,177 [INFO] 
+[process_and_save_input_image_patches] Loading input image: input/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 17:41:03,209 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1_crop0.png for Bounding Box #0
+2025-01-02 17:41:03,216 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1_patch0.png for Bounding Box #0
+2025-01-02 17:41:03,217 [INFO] [main_pipeline] Original image copied to: output/images/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 17:41:03,217 [INFO] 
+[main_pipeline] Classifying each segmented region...
+2025-01-02 17:41:03,261 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 17:41:06,197 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:41:06,200 [INFO] ################# [GPT] Box #0 Label: olive fruit Class 2 - <50% red, Maturity: Based on the vector database label "Class 2 - <50% red," the ripeness score of the olive fruit on the Jaén Scale would be 2, indicating "Purple spots."
+2025-01-02 17:41:06,200 [INFO] 
+[main_pipeline] Annotating image with bounding boxes, labels, and generating polygon masks...
+2025-01-02 17:41:09,597 [INFO] [annotate_image] Annotated image saved at: output/processed_images/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 17:41:09,597 [INFO] [annotate_image] YOLO labels (Vector DB) saved at: output/labels_vdb_bbox/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.txt
+2025-01-02 17:41:09,598 [INFO] [annotate_image] YOLO labels (Orchestrator) saved at: output/labels_gpt_bbox/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.txt
+2025-01-02 17:41:09,599 [INFO] [annotate_image] COCO polygon annotations (Vector DB) saved at: output/labels_vdb_polygon/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1_polygon_vdb.json
+2025-01-02 17:41:09,601 [INFO] [annotate_image] COCO polygon annotations (Orchestrator) saved at: output/labels_gpt_polygon/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1_polygon_orchestrator.json
+2025-01-02 17:41:09,602 [INFO] 
+[Main] Processing image: input/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 17:41:09,602 [INFO] 
+[main_pipeline] Segmenting objects in input image...
+2025-01-02 17:41:13,434 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 17:41:13,434 [INFO] Box 0: tensor([0.5243, 0.4889, 0.6581, 0.5966])
+2025-01-02 17:41:13,434 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 17:41:13,434 [INFO] 
+[process_and_save_input_image_patches] Loading input image: input/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 17:41:13,458 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a_crop0.png for Bounding Box #0
+2025-01-02 17:41:13,465 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a_patch0.png for Bounding Box #0
+2025-01-02 17:41:13,465 [INFO] [main_pipeline] Original image copied to: output/images/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 17:41:13,465 [INFO] 
+[main_pipeline] Classifying each segmented region...
+2025-01-02 17:41:13,512 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 17:41:15,676 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:41:15,678 [INFO] ################# [GPT] Box #0 Label: olive fruit Class 2 - <50% red, Maturity: Based on the vector database label "Class 2 - <50% red," this olive fruit is at ripeness score 2 on the Jaén Scale, which corresponds to "Purple spots."
+2025-01-02 17:41:15,678 [INFO] 
+[main_pipeline] Annotating image with bounding boxes, labels, and generating polygon masks...
+2025-01-02 17:41:19,679 [INFO] [annotate_image] Annotated image saved at: output/processed_images/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 17:41:19,679 [INFO] [annotate_image] YOLO labels (Vector DB) saved at: output/labels_vdb_bbox/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.txt
+2025-01-02 17:41:19,679 [INFO] [annotate_image] YOLO labels (Orchestrator) saved at: output/labels_gpt_bbox/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.txt
+2025-01-02 17:41:19,681 [INFO] [annotate_image] COCO polygon annotations (Vector DB) saved at: output/labels_vdb_polygon/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a_polygon_vdb.json
+2025-01-02 17:41:19,682 [INFO] [annotate_image] COCO polygon annotations (Orchestrator) saved at: output/labels_gpt_polygon/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a_polygon_orchestrator.json
+2025-01-02 17:41:19,684 [INFO] 
+[Main] Processing image: input/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 17:41:19,684 [INFO] 
+[main_pipeline] Segmenting objects in input image...
+2025-01-02 17:41:23,704 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 17:41:23,704 [INFO] Box 0: tensor([0.5009, 0.4440, 0.7203, 0.6162])
+2025-01-02 17:41:23,705 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 17:41:23,705 [INFO] 
+[process_and_save_input_image_patches] Loading input image: input/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 17:41:23,722 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83_crop0.png for Bounding Box #0
+2025-01-02 17:41:23,732 [INFO] [INFO] Center-based patch saved at: output/patches/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83_patch0.png for Bounding Box #0
+2025-01-02 17:41:23,732 [INFO] [main_pipeline] Original image copied to: output/images/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 17:41:23,732 [INFO] 
+[main_pipeline] Classifying each segmented region...
+2025-01-02 17:41:23,773 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 1 - Green Yellow
+2025-01-02 17:41:27,030 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 17:41:27,035 [INFO] ################# [GPT] Box #0 Label: olive fruit Class 1 - Green Yellow, Maturity: Based on the image and the Jaén Scale, the olive fruit appears to have purple on more than 50% of the surface. This corresponds to a ripeness score of 3 on the Jaén Scale. Therefore, it would be classified as Class 3 - > 50% red.
+2025-01-02 17:41:27,035 [INFO] 
+[main_pipeline] Annotating image with bounding boxes, labels, and generating polygon masks...
+2025-01-02 17:41:30,788 [INFO] [annotate_image] Annotated image saved at: output/processed_images/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 17:41:30,789 [INFO] [annotate_image] YOLO labels (Vector DB) saved at: output/labels_vdb_bbox/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.txt
+2025-01-02 17:41:30,789 [INFO] [annotate_image] YOLO labels (Orchestrator) saved at: output/labels_gpt_bbox/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.txt
+2025-01-02 17:41:30,790 [INFO] [annotate_image] COCO polygon annotations (Vector DB) saved at: output/labels_vdb_polygon/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83_polygon_vdb.json
+2025-01-02 17:41:30,792 [INFO] [annotate_image] COCO polygon annotations (Orchestrator) saved at: output/labels_gpt_polygon/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83_polygon_orchestrator.json
+2025-01-02 18:00:37,190 [INFO] [Main] label_to_id_map: {'olive fruit Class 0 - Green': 0, 'olive fruit Class 1 - Green Yellow': 1, 'olive fruit Class 2 - <50% red': 2, 'olive fruit Class 3 - > 50% red': 3, 'olive fruit Class 4 - red': 4, 'olive fruit Class 5 - purple/black': 5}
+2025-01-02 18:00:37,190 [INFO] [Main] Loaded custom prompt from prompt.txt
+2025-01-02 18:00:37,190 [INFO] [Main] patch_size: (150, 150)
+2025-01-02 18:00:37,190 [INFO] 
+[Main] Loading GroundingDINO model...
+2025-01-02 18:00:37,201 [INFO] [load_groundingdino_model] Using device: mps
+2025-01-02 18:00:38,821 [INFO] 
+[Main] Loading CLIP model...
+2025-01-02 18:00:38,821 [INFO] [load_clip_model] Using device: mps
+2025-01-02 18:00:39,429 [INFO] 
+[Main] Building or loading vector store...
+2025-01-02 18:00:39,431 [INFO] 
+[build_reference_vectorstore] Loading reference #0: references/class_0_img1.png
+2025-01-02 18:00:39,442 [INFO] [INFO] Original patch saved at: output/vector_db/class_0_img1_crop0_original.png
+2025-01-02 18:00:39,907 [INFO] 
+[build_reference_vectorstore] Loading reference #1: references/class_0_img2.png
+2025-01-02 18:00:39,917 [INFO] [INFO] Original patch saved at: output/vector_db/class_0_img2_crop1_original.png
+2025-01-02 18:00:40,123 [INFO] 
+[build_reference_vectorstore] Loading reference #2: references/class_0_img3.png
+2025-01-02 18:00:40,130 [INFO] [INFO] Original patch saved at: output/vector_db/class_0_img3_crop2_original.png
+2025-01-02 18:00:40,331 [INFO] 
+[build_reference_vectorstore] Loading reference #3: references/class_0_img4.png
+2025-01-02 18:00:40,338 [INFO] [INFO] Original patch saved at: output/vector_db/class_0_img4_crop3_original.png
+2025-01-02 18:00:40,544 [INFO] 
+[build_reference_vectorstore] Loading reference #4: references/class_1_img1.png
+2025-01-02 18:00:40,551 [INFO] [INFO] Original patch saved at: output/vector_db/class_1_img1_crop4_original.png
+2025-01-02 18:00:40,748 [INFO] 
+[build_reference_vectorstore] Loading reference #5: references/class_1_img2.png
+2025-01-02 18:00:40,755 [INFO] [INFO] Original patch saved at: output/vector_db/class_1_img2_crop5_original.png
+2025-01-02 18:00:40,944 [INFO] 
+[build_reference_vectorstore] Loading reference #6: references/class_1_img3.png
+2025-01-02 18:00:40,952 [INFO] [INFO] Original patch saved at: output/vector_db/class_1_img3_crop6_original.png
+2025-01-02 18:00:41,156 [INFO] 
+[build_reference_vectorstore] Loading reference #7: references/class_1_img4.png
+2025-01-02 18:00:41,164 [INFO] [INFO] Original patch saved at: output/vector_db/class_1_img4_crop7_original.png
+2025-01-02 18:00:41,369 [INFO] 
+[build_reference_vectorstore] Loading reference #8: references/class_2_img1.png
+2025-01-02 18:00:41,376 [INFO] [INFO] Original patch saved at: output/vector_db/class_2_img1_crop8_original.png
+2025-01-02 18:00:41,569 [INFO] 
+[build_reference_vectorstore] Loading reference #9: references/class_2_img2.png
+2025-01-02 18:00:41,575 [INFO] [INFO] Original patch saved at: output/vector_db/class_2_img2_crop9_original.png
+2025-01-02 18:00:41,802 [INFO] 
+[build_reference_vectorstore] Loading reference #10: references/class_2_img3.png
+2025-01-02 18:00:41,810 [INFO] [INFO] Original patch saved at: output/vector_db/class_2_img3_crop10_original.png
+2025-01-02 18:00:42,007 [INFO] 
+[build_reference_vectorstore] Loading reference #11: references/class_2_img4.png
+2025-01-02 18:00:42,013 [INFO] [INFO] Original patch saved at: output/vector_db/class_2_img4_crop11_original.png
+2025-01-02 18:00:42,205 [INFO] 
+[build_reference_vectorstore] Loading reference #12: references/class_3_img1.png
+2025-01-02 18:00:42,215 [INFO] [INFO] Original patch saved at: output/vector_db/class_3_img1_crop12_original.png
+2025-01-02 18:00:42,422 [INFO] 
+[build_reference_vectorstore] Loading reference #13: references/class_3_img2.png
+2025-01-02 18:00:42,430 [INFO] [INFO] Original patch saved at: output/vector_db/class_3_img2_crop13_original.png
+2025-01-02 18:00:42,630 [INFO] 
+[build_reference_vectorstore] Loading reference #14: references/class_3_img3.png
+2025-01-02 18:00:42,640 [INFO] [INFO] Original patch saved at: output/vector_db/class_3_img3_crop14_original.png
+2025-01-02 18:00:42,852 [INFO] 
+[build_reference_vectorstore] Loading reference #15: references/class_3_img4.png
+2025-01-02 18:00:42,860 [INFO] [INFO] Original patch saved at: output/vector_db/class_3_img4_crop15_original.png
+2025-01-02 18:00:43,073 [INFO] 
+[build_reference_vectorstore] Loading reference #16: references/class_4_img1.png
+2025-01-02 18:00:43,081 [INFO] [INFO] Original patch saved at: output/vector_db/class_4_img1_crop16_original.png
+2025-01-02 18:00:43,281 [INFO] 
+[build_reference_vectorstore] Loading reference #17: references/class_4_img2.png
+2025-01-02 18:00:43,287 [INFO] [INFO] Original patch saved at: output/vector_db/class_4_img2_crop17_original.png
+2025-01-02 18:00:43,482 [INFO] 
+[build_reference_vectorstore] Loading reference #18: references/class_4_img3.png
+2025-01-02 18:00:43,490 [INFO] [INFO] Original patch saved at: output/vector_db/class_4_img3_crop18_original.png
+2025-01-02 18:00:43,691 [INFO] 
+[build_reference_vectorstore] Loading reference #19: references/class_4_img4.png
+2025-01-02 18:00:43,700 [INFO] [INFO] Original patch saved at: output/vector_db/class_4_img4_crop19_original.png
+2025-01-02 18:00:43,908 [INFO] 
+[build_reference_vectorstore] Loading reference #20: references/class_5_img1.png
+2025-01-02 18:00:43,916 [INFO] [INFO] Original patch saved at: output/vector_db/class_5_img1_crop20_original.png
+2025-01-02 18:00:44,117 [INFO] 
+[build_reference_vectorstore] Loading reference #21: references/class_5_img2.png
+2025-01-02 18:00:44,124 [INFO] [INFO] Original patch saved at: output/vector_db/class_5_img2_crop21_original.png
+2025-01-02 18:00:44,324 [INFO] 
+[build_reference_vectorstore] Loading reference #22: references/class_5_img3.png
+2025-01-02 18:00:44,332 [INFO] [INFO] Original patch saved at: output/vector_db/class_5_img3_crop22_original.png
+2025-01-02 18:00:44,543 [INFO] 
+[build_reference_vectorstore] Loading reference #23: references/class_5_img4.png
+2025-01-02 18:00:44,552 [INFO] [INFO] Original patch saved at: output/vector_db/class_5_img4_crop23_original.png
+2025-01-02 18:00:44,754 [INFO] 
+[build_reference_vectorstore] Building FAISS from 168 items.
+2025-01-02 18:00:44,755 [INFO] Loading faiss.
+2025-01-02 18:00:44,765 [INFO] Successfully loaded faiss.
+2025-01-02 18:00:44,771 [INFO] [build_reference_vectorstore] Saved FAISS index in output/vector_db.
+2025-01-02 18:00:44,771 [INFO] 
+[Main] Initializing ChatOpenAI model...
+2025-01-02 18:00:44,812 [INFO] [Main] ChatOpenAI ready.
+2025-01-02 18:00:44,813 [INFO] 
+[Main] Loading SAM model for polygon generation...
+2025-01-02 18:00:44,813 [INFO] [load_sam_model] Using MPS (Apple Silicon) backend.
+2025-01-02 18:00:47,993 [INFO] [load_sam_model] SAM model 'vit_h' loaded successfully.
+2025-01-02 18:00:47,994 [INFO] [load_sam_model] SAM Predictor initialized successfully.
+2025-01-02 18:00:47,994 [INFO] 
+[Main] Processing: input/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 18:00:47,994 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 18:00:52,054 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:00:52,055 [INFO] Box 0: tensor([0.5007, 0.4251, 0.6735, 0.6341])
+2025-01-02 18:00:52,055 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:00:52,055 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 18:00:52,070 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571_crop0.png (Box #0)
+2025-01-02 18:00:52,081 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571_patch0.png (Box #0)
+2025-01-02 18:00:52,081 [INFO] [main_pipeline] Copied original: output/images/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 18:00:52,082 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:00:52,144 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 1 - Green Yellow
+2025-01-02 18:00:54,690 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:00:54,717 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:00:56,631 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:00:56,633 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the information provided:
+
+- The image seems to show the olive as intense green.
+- The vector database labels it as Class 1 - Green Yellow.
+
+Considering both, the final ripeness classification is Class 1 - Green Yellow.
+2025-01-02 18:00:56,633 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:01:00,249 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 18:01:00,250 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.txt
+2025-01-02 18:01:00,250 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.txt
+2025-01-02 18:01:00,251 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571_polygon_vdb.json
+2025-01-02 18:01:00,252 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571_polygon_orchestrator.json
+2025-01-02 18:01:00,254 [INFO] 
+[Main] Processing: input/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 18:01:00,254 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 18:01:03,397 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:01:03,397 [INFO] Box 0: tensor([0.5163, 0.4898, 0.4981, 0.4246])
+2025-01-02 18:01:03,397 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:01:03,398 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 18:01:03,421 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e_crop0.png (Box #0)
+2025-01-02 18:01:03,431 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e_patch0.png (Box #0)
+2025-01-02 18:01:03,432 [INFO] [main_pipeline] Copied original: output/images/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 18:01:03,432 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:01:03,477 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 1 - Green Yellow
+2025-01-02 18:01:05,030 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:01:05,036 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:01:07,116 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:01:07,119 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the information from the vector database, the ripeness classification of the olive fruit is Class 1 - Green Yellow.
+2025-01-02 18:01:07,119 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:01:10,332 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 18:01:10,332 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.txt
+2025-01-02 18:01:10,332 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.txt
+2025-01-02 18:01:10,334 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e_polygon_vdb.json
+2025-01-02 18:01:10,335 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e_polygon_orchestrator.json
+2025-01-02 18:01:10,336 [INFO] 
+[Main] Processing: input/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 18:01:10,336 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 18:01:13,644 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:01:13,645 [INFO] Box 0: tensor([0.5169, 0.5101, 0.6024, 0.6366])
+2025-01-02 18:01:13,645 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:01:13,645 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 18:01:13,665 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9_crop0.png (Box #0)
+2025-01-02 18:01:13,672 [INFO] [INFO] Center-based patch saved: output/patches/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9_patch0.png (Box #0)
+2025-01-02 18:01:13,672 [INFO] [main_pipeline] Copied original: output/images/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 18:01:13,672 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:01:13,712 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:01:15,376 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:01:15,379 [INFO] ######### GPT FIRST CALL RESPONSE: Class 5 - purple/black.
+2025-01-02 18:01:17,397 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:01:17,409 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the given vector database label and the image, the final ripeness classification for the olive fruit is **Class 2 - <50% red**.
+2025-01-02 18:01:17,409 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:01:20,759 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 18:01:20,759 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.txt
+2025-01-02 18:01:20,759 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.txt
+2025-01-02 18:01:20,761 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9_polygon_vdb.json
+2025-01-02 18:01:20,762 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9_polygon_orchestrator.json
+2025-01-02 18:01:20,762 [INFO] 
+[Main] Processing: input/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 18:01:20,762 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 18:01:24,682 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:01:24,683 [INFO] Box 0: tensor([0.5068, 0.4521, 0.5052, 0.6029])
+2025-01-02 18:01:24,683 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:01:24,683 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 18:01:24,696 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy_crop0.png (Box #0)
+2025-01-02 18:01:24,704 [INFO] [INFO] Center-based patch saved: output/patches/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy_patch0.png (Box #0)
+2025-01-02 18:01:24,704 [INFO] [main_pipeline] Copied original: output/images/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 18:01:24,704 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:01:24,751 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:01:26,635 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:01:26,636 [INFO] ######### GPT FIRST CALL RESPONSE: Class 2 - <50% red
+2025-01-02 18:01:28,359 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:01:28,363 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the information provided, the olive fruit falls under Class 2 - <50% red.
+2025-01-02 18:01:28,363 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:01:31,674 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 18:01:31,674 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.txt
+2025-01-02 18:01:31,675 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.txt
+2025-01-02 18:01:31,676 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy_polygon_vdb.json
+2025-01-02 18:01:31,676 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy_polygon_orchestrator.json
+2025-01-02 18:01:31,678 [INFO] 
+[Main] Processing: input/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 18:01:31,678 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 18:01:34,735 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:01:34,735 [INFO] Box 0: tensor([0.5692, 0.4532, 0.5347, 0.6426])
+2025-01-02 18:01:34,735 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:01:34,736 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 18:01:34,769 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b_crop0.png (Box #0)
+2025-01-02 18:01:34,779 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b_patch0.png (Box #0)
+2025-01-02 18:01:34,780 [INFO] [main_pipeline] Copied original: output/images/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 18:01:34,780 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:01:34,819 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 3 - > 50% red
+2025-01-02 18:01:36,160 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:01:36,163 [INFO] ######### GPT FIRST CALL RESPONSE: Class 2 - <50% red
+2025-01-02 18:01:38,216 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:01:38,219 [INFO] ######### GPT SECOND CALL RESPONSE: To finalize the ripeness classification based on the Jaén Scale, we have two pieces of information:
+
+1. The vector database label is Class 3 - > 50% red.
+2. The initial assessment was Class 2 - <50% red.
+
+Considering the vector database label is typically more reliable, the final ripeness classification for the olive fruit is:
+
+**Class 3 - > 50% red**
+2025-01-02 18:01:38,220 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:01:41,411 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 18:01:41,411 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.txt
+2025-01-02 18:01:41,411 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.txt
+2025-01-02 18:01:41,412 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b_polygon_vdb.json
+2025-01-02 18:01:41,414 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b_polygon_orchestrator.json
+2025-01-02 18:01:41,414 [INFO] 
+[Main] Processing: input/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 18:01:41,414 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 18:01:44,895 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:01:44,896 [INFO] Box 0: tensor([0.5144, 0.5286, 0.5482, 0.5551])
+2025-01-02 18:01:44,896 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:01:44,896 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 18:01:44,931 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf_crop0.png (Box #0)
+2025-01-02 18:01:44,943 [INFO] [INFO] Center-based patch saved: output/patches/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf_patch0.png (Box #0)
+2025-01-02 18:01:44,944 [INFO] [main_pipeline] Copied original: output/images/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 18:01:44,944 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:01:44,980 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:01:46,707 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:01:46,710 [INFO] ######### GPT FIRST CALL RESPONSE: Class 2 - <50% red
+2025-01-02 18:01:48,550 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:01:48,552 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the provided image and the vector database label, the ripeness classification of the olive fruit is:
+
+Class 2 - <50% red
+2025-01-02 18:01:48,553 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:01:52,045 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 18:01:52,046 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.txt
+2025-01-02 18:01:52,046 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.txt
+2025-01-02 18:01:52,047 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf_polygon_vdb.json
+2025-01-02 18:01:52,048 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf_polygon_orchestrator.json
+2025-01-02 18:01:52,051 [INFO] 
+[Main] Processing: input/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 18:01:52,051 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 18:01:55,383 [INFO] [main_pipeline] Detected 4 bounding boxes.
+2025-01-02 18:01:55,384 [INFO] Box 0: tensor([0.5828, 0.5258, 0.7110, 0.5148])
+2025-01-02 18:01:55,384 [INFO] Box 1: tensor([0.9066, 0.0776, 0.1868, 0.1549])
+2025-01-02 18:01:55,384 [INFO] Box 2: tensor([0.8452, 0.3272, 0.3101, 0.4125])
+2025-01-02 18:01:55,384 [INFO] Box 3: tensor([0.6122, 0.4997, 0.7748, 0.9997])
+2025-01-02 18:01:55,384 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:01:55,385 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 18:01:55,420 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_crop0.png (Box #0)
+2025-01-02 18:01:55,427 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_patch0.png (Box #0)
+2025-01-02 18:01:55,430 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_crop1.png (Box #1)
+2025-01-02 18:01:55,435 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_patch1.png (Box #1)
+2025-01-02 18:01:55,448 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_crop2.png (Box #2)
+2025-01-02 18:01:55,457 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_patch2.png (Box #2)
+2025-01-02 18:01:55,534 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_crop3.png (Box #3)
+2025-01-02 18:01:55,541 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_patch3.png (Box #3)
+2025-01-02 18:01:55,542 [INFO] [main_pipeline] Copied original: output/images/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 18:01:55,542 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:01:55,600 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:01:56,948 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:01:56,952 [INFO] ######### GPT FIRST CALL RESPONSE: Class 1 - Green Yellow
+2025-01-02 18:01:58,400 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:01:58,403 [INFO] ######### GPT SECOND CALL RESPONSE: Class 1 - Green Yellow
+2025-01-02 18:01:58,544 [INFO] ################# Vectordatabase: Box #1 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:02:00,122 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:00,126 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:02:02,944 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:02,946 [INFO] ######### GPT SECOND CALL RESPONSE: The olive fruit in the image appears to be Class 0 - Green based on the Jaén Scale. However, considering the vector database label of Class 2 - <50% red, there might be some discrepancies or additional factors not visible in the image. 
+
+To finalize the ripeness classification, the most reliable approach would be to consider the vector database, which is likely based on a broader analysis. Therefore, the ripeness classification is Class 2 - <50% red.
+2025-01-02 18:02:03,095 [INFO] ################# Vectordatabase: Box #2 - Match 1: olive fruit Class 1 - Green Yellow
+2025-01-02 18:02:04,251 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:04,254 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:02:05,782 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:05,785 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the provided information, the ripeness classification of the olive fruit is Class 1 - Green Yellow.
+2025-01-02 18:02:05,920 [INFO] ################# Vectordatabase: Box #3 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:02:07,392 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:07,395 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:02:08,811 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:08,814 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the information from the vector database, the final ripeness classification for the olive fruit is **Class 2 - <50% red**.
+2025-01-02 18:02:08,815 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:02:20,966 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 18:02:20,966 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.txt
+2025-01-02 18:02:20,967 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.txt
+2025-01-02 18:02:20,971 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_polygon_vdb.json
+2025-01-02 18:02:20,976 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_polygon_orchestrator.json
+2025-01-02 18:02:20,978 [INFO] 
+[Main] Processing: input/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 18:02:20,978 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 18:02:23,557 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:02:23,557 [INFO] Box 0: tensor([0.4576, 0.4323, 0.6001, 0.4928])
+2025-01-02 18:02:23,557 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:02:23,557 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 18:02:23,581 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c_crop0.png (Box #0)
+2025-01-02 18:02:23,592 [INFO] [INFO] Center-based patch saved: output/patches/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c_patch0.png (Box #0)
+2025-01-02 18:02:23,592 [INFO] [main_pipeline] Copied original: output/images/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 18:02:23,592 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:02:23,638 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 1 - Green Yellow
+2025-01-02 18:02:25,213 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:25,215 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:02:26,958 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:26,960 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the given information, the ripeness classification for the olive fruit is Class 1 - Green Yellow.
+2025-01-02 18:02:26,961 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:02:30,247 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 18:02:30,247 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.txt
+2025-01-02 18:02:30,247 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.txt
+2025-01-02 18:02:30,248 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c_polygon_vdb.json
+2025-01-02 18:02:30,250 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c_polygon_orchestrator.json
+2025-01-02 18:02:30,251 [INFO] 
+[Main] Processing: input/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 18:02:30,251 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 18:02:33,938 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:02:33,939 [INFO] Box 0: tensor([0.5696, 0.5091, 0.4930, 0.5319])
+2025-01-02 18:02:33,939 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:02:33,939 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 18:02:33,954 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e_crop0.png (Box #0)
+2025-01-02 18:02:33,962 [INFO] [INFO] Center-based patch saved: output/patches/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e_patch0.png (Box #0)
+2025-01-02 18:02:33,962 [INFO] [main_pipeline] Copied original: output/images/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 18:02:33,962 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:02:34,001 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 3 - > 50% red
+2025-01-02 18:02:35,350 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:35,352 [INFO] ######### GPT FIRST CALL RESPONSE: Class 5 - purple/black
+2025-01-02 18:02:36,679 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:36,681 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the provided information, the ripeness classification of the olive fruit is Class 3 - > 50% red.
+2025-01-02 18:02:36,682 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:02:39,932 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 18:02:39,933 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.txt
+2025-01-02 18:02:39,933 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.txt
+2025-01-02 18:02:39,934 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e_polygon_vdb.json
+2025-01-02 18:02:39,935 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e_polygon_orchestrator.json
+2025-01-02 18:02:39,937 [INFO] 
+[Main] Processing: input/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 18:02:39,937 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 18:02:43,283 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:02:43,283 [INFO] Box 0: tensor([0.4539, 0.4180, 0.5291, 0.5803])
+2025-01-02 18:02:43,283 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:02:43,283 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 18:02:43,315 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1_crop0.png (Box #0)
+2025-01-02 18:02:43,322 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1_patch0.png (Box #0)
+2025-01-02 18:02:43,323 [INFO] [main_pipeline] Copied original: output/images/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 18:02:43,323 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:02:43,371 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:02:44,566 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:44,567 [INFO] ######### GPT FIRST CALL RESPONSE: Class 5 - purple/black
+2025-01-02 18:02:46,197 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:46,199 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the information given and the image, the ripeness classification should be **Class 5 - purple/black**.
+2025-01-02 18:02:46,199 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:02:49,847 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 18:02:49,848 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.txt
+2025-01-02 18:02:49,848 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.txt
+2025-01-02 18:02:49,850 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1_polygon_vdb.json
+2025-01-02 18:02:49,851 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1_polygon_orchestrator.json
+2025-01-02 18:02:49,853 [INFO] 
+[Main] Processing: input/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 18:02:49,853 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 18:02:53,856 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:02:53,856 [INFO] Box 0: tensor([0.5243, 0.4889, 0.6581, 0.5966])
+2025-01-02 18:02:53,856 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:02:53,856 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 18:02:53,880 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a_crop0.png (Box #0)
+2025-01-02 18:02:53,886 [INFO] [INFO] Center-based patch saved: output/patches/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a_patch0.png (Box #0)
+2025-01-02 18:02:53,886 [INFO] [main_pipeline] Copied original: output/images/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 18:02:53,887 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:02:53,927 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:02:55,522 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:55,525 [INFO] ######### GPT FIRST CALL RESPONSE: Class 5 - purple/black
+2025-01-02 18:02:57,185 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:02:57,187 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the vector database label and the image, the ripeness classification for this olive fruit is Class 2 - <50% red.
+2025-01-02 18:02:57,188 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:03:00,438 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 18:03:00,438 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.txt
+2025-01-02 18:03:00,438 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.txt
+2025-01-02 18:03:00,440 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a_polygon_vdb.json
+2025-01-02 18:03:00,441 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a_polygon_orchestrator.json
+2025-01-02 18:03:00,441 [INFO] 
+[Main] Processing: input/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 18:03:00,441 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 18:03:03,951 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:03:03,951 [INFO] Box 0: tensor([0.5009, 0.4440, 0.7203, 0.6162])
+2025-01-02 18:03:03,951 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:03:03,951 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 18:03:03,969 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83_crop0.png (Box #0)
+2025-01-02 18:03:03,978 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83_patch0.png (Box #0)
+2025-01-02 18:03:03,978 [INFO] [main_pipeline] Copied original: output/images/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 18:03:03,978 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:03:04,016 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 1 - Green Yellow
+2025-01-02 18:03:06,278 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:03:06,281 [INFO] ######### GPT FIRST CALL RESPONSE: Class 5 - purple/black
+2025-01-02 18:03:08,965 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:03:08,968 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the provided information, the olive fruit appears to be Class 5 - purple/black, indicating full ripeness. This classification aligns with the visual evidence despite the vector database label.
+2025-01-02 18:03:08,968 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:03:12,220 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 18:03:12,220 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.txt
+2025-01-02 18:03:12,220 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.txt
+2025-01-02 18:03:12,222 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83_polygon_vdb.json
+2025-01-02 18:03:12,223 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83_polygon_orchestrator.json
+2025-01-02 18:04:54,150 [INFO] [Main] label_to_id_map: {'olive fruit Class 0 - Intense green.': 0, 'olive fruit Class 1 - Yellowish green': 1, 'olive fruit Class 2 - <50% red': 2, 'olive fruit Class 3 - > 50% red': 3, 'olive fruit Class 4 - red': 4, 'olive fruit Class 5 - purple/black': 5}
+2025-01-02 18:04:54,151 [INFO] [Main] Loaded custom prompt from prompt.txt
+2025-01-02 18:04:54,151 [INFO] [Main] patch_size: (150, 150)
+2025-01-02 18:04:54,151 [INFO] 
+[Main] Loading GroundingDINO model...
+2025-01-02 18:04:54,160 [INFO] [load_groundingdino_model] Using device: mps
+2025-01-02 18:04:55,605 [INFO] 
+[Main] Loading CLIP model...
+2025-01-02 18:04:55,605 [INFO] [load_clip_model] Using device: mps
+2025-01-02 18:04:56,214 [INFO] 
+[Main] Building or loading vector store...
+2025-01-02 18:04:56,214 [INFO] 
+[build_reference_vectorstore] Loading reference #0: references/class_0_img1.png
+2025-01-02 18:04:56,225 [INFO] [INFO] Original patch saved at: output/vector_db/class_0_img1_crop0_original.png
+2025-01-02 18:04:56,679 [INFO] 
+[build_reference_vectorstore] Loading reference #1: references/class_0_img2.png
+2025-01-02 18:04:56,689 [INFO] [INFO] Original patch saved at: output/vector_db/class_0_img2_crop1_original.png
+2025-01-02 18:04:56,907 [INFO] 
+[build_reference_vectorstore] Loading reference #2: references/class_0_img3.png
+2025-01-02 18:04:56,914 [INFO] [INFO] Original patch saved at: output/vector_db/class_0_img3_crop2_original.png
+2025-01-02 18:04:57,116 [INFO] 
+[build_reference_vectorstore] Loading reference #3: references/class_0_img4.png
+2025-01-02 18:04:57,122 [INFO] [INFO] Original patch saved at: output/vector_db/class_0_img4_crop3_original.png
+2025-01-02 18:04:57,322 [INFO] 
+[build_reference_vectorstore] Loading reference #4: references/class_1_img1.png
+2025-01-02 18:04:57,328 [INFO] [INFO] Original patch saved at: output/vector_db/class_1_img1_crop4_original.png
+2025-01-02 18:04:57,524 [INFO] 
+[build_reference_vectorstore] Loading reference #5: references/class_1_img2.png
+2025-01-02 18:04:57,530 [INFO] [INFO] Original patch saved at: output/vector_db/class_1_img2_crop5_original.png
+2025-01-02 18:04:57,742 [INFO] 
+[build_reference_vectorstore] Loading reference #6: references/class_1_img3.png
+2025-01-02 18:04:57,750 [INFO] [INFO] Original patch saved at: output/vector_db/class_1_img3_crop6_original.png
+2025-01-02 18:04:57,965 [INFO] 
+[build_reference_vectorstore] Loading reference #7: references/class_1_img4.png
+2025-01-02 18:04:57,973 [INFO] [INFO] Original patch saved at: output/vector_db/class_1_img4_crop7_original.png
+2025-01-02 18:04:58,192 [INFO] 
+[build_reference_vectorstore] Loading reference #8: references/class_2_img1.png
+2025-01-02 18:04:58,199 [INFO] [INFO] Original patch saved at: output/vector_db/class_2_img1_crop8_original.png
+2025-01-02 18:04:58,394 [INFO] 
+[build_reference_vectorstore] Loading reference #9: references/class_2_img2.png
+2025-01-02 18:04:58,402 [INFO] [INFO] Original patch saved at: output/vector_db/class_2_img2_crop9_original.png
+2025-01-02 18:04:58,604 [INFO] 
+[build_reference_vectorstore] Loading reference #10: references/class_2_img3.png
+2025-01-02 18:04:58,612 [INFO] [INFO] Original patch saved at: output/vector_db/class_2_img3_crop10_original.png
+2025-01-02 18:04:58,820 [INFO] 
+[build_reference_vectorstore] Loading reference #11: references/class_2_img4.png
+2025-01-02 18:04:58,826 [INFO] [INFO] Original patch saved at: output/vector_db/class_2_img4_crop11_original.png
+2025-01-02 18:04:59,012 [INFO] 
+[build_reference_vectorstore] Loading reference #12: references/class_3_img1.png
+2025-01-02 18:04:59,021 [INFO] [INFO] Original patch saved at: output/vector_db/class_3_img1_crop12_original.png
+2025-01-02 18:04:59,227 [INFO] 
+[build_reference_vectorstore] Loading reference #13: references/class_3_img2.png
+2025-01-02 18:04:59,235 [INFO] [INFO] Original patch saved at: output/vector_db/class_3_img2_crop13_original.png
+2025-01-02 18:04:59,436 [INFO] 
+[build_reference_vectorstore] Loading reference #14: references/class_3_img3.png
+2025-01-02 18:04:59,447 [INFO] [INFO] Original patch saved at: output/vector_db/class_3_img3_crop14_original.png
+2025-01-02 18:04:59,661 [INFO] 
+[build_reference_vectorstore] Loading reference #15: references/class_3_img4.png
+2025-01-02 18:04:59,669 [INFO] [INFO] Original patch saved at: output/vector_db/class_3_img4_crop15_original.png
+2025-01-02 18:04:59,884 [INFO] 
+[build_reference_vectorstore] Loading reference #16: references/class_4_img1.png
+2025-01-02 18:04:59,892 [INFO] [INFO] Original patch saved at: output/vector_db/class_4_img1_crop16_original.png
+2025-01-02 18:05:00,097 [INFO] 
+[build_reference_vectorstore] Loading reference #17: references/class_4_img2.png
+2025-01-02 18:05:00,104 [INFO] [INFO] Original patch saved at: output/vector_db/class_4_img2_crop17_original.png
+2025-01-02 18:05:00,318 [INFO] 
+[build_reference_vectorstore] Loading reference #18: references/class_4_img3.png
+2025-01-02 18:05:00,325 [INFO] [INFO] Original patch saved at: output/vector_db/class_4_img3_crop18_original.png
+2025-01-02 18:05:00,530 [INFO] 
+[build_reference_vectorstore] Loading reference #19: references/class_4_img4.png
+2025-01-02 18:05:00,538 [INFO] [INFO] Original patch saved at: output/vector_db/class_4_img4_crop19_original.png
+2025-01-02 18:05:00,752 [INFO] 
+[build_reference_vectorstore] Loading reference #20: references/class_5_img1.png
+2025-01-02 18:05:00,760 [INFO] [INFO] Original patch saved at: output/vector_db/class_5_img1_crop20_original.png
+2025-01-02 18:05:00,959 [INFO] 
+[build_reference_vectorstore] Loading reference #21: references/class_5_img2.png
+2025-01-02 18:05:00,967 [INFO] [INFO] Original patch saved at: output/vector_db/class_5_img2_crop21_original.png
+2025-01-02 18:05:01,174 [INFO] 
+[build_reference_vectorstore] Loading reference #22: references/class_5_img3.png
+2025-01-02 18:05:01,183 [INFO] [INFO] Original patch saved at: output/vector_db/class_5_img3_crop22_original.png
+2025-01-02 18:05:01,388 [INFO] 
+[build_reference_vectorstore] Loading reference #23: references/class_5_img4.png
+2025-01-02 18:05:01,396 [INFO] [INFO] Original patch saved at: output/vector_db/class_5_img4_crop23_original.png
+2025-01-02 18:05:01,609 [INFO] 
+[build_reference_vectorstore] Building FAISS from 168 items.
+2025-01-02 18:05:01,611 [INFO] Loading faiss.
+2025-01-02 18:05:01,622 [INFO] Successfully loaded faiss.
+2025-01-02 18:05:01,629 [INFO] [build_reference_vectorstore] Saved FAISS index in output/vector_db.
+2025-01-02 18:05:01,629 [INFO] 
+[Main] Initializing ChatOpenAI model...
+2025-01-02 18:05:01,671 [INFO] [Main] ChatOpenAI ready.
+2025-01-02 18:05:01,671 [INFO] 
+[Main] Loading SAM model for polygon generation...
+2025-01-02 18:05:01,671 [INFO] [load_sam_model] Using MPS (Apple Silicon) backend.
+2025-01-02 18:05:04,540 [INFO] [load_sam_model] SAM model 'vit_h' loaded successfully.
+2025-01-02 18:05:04,540 [INFO] [load_sam_model] SAM Predictor initialized successfully.
+2025-01-02 18:05:04,540 [INFO] 
+[Main] Processing: input/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 18:05:04,541 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 18:05:08,362 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:05:08,363 [INFO] Box 0: tensor([0.5007, 0.4251, 0.6735, 0.6341])
+2025-01-02 18:05:08,363 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:05:08,363 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 18:05:08,377 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571_crop0.png (Box #0)
+2025-01-02 18:05:08,388 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571_patch0.png (Box #0)
+2025-01-02 18:05:08,388 [INFO] [main_pipeline] Copied original: output/images/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 18:05:08,388 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:05:08,429 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 1 - Yellowish green
+2025-01-02 18:05:10,392 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:05:10,415 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:05:12,539 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:05:12,542 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the information provided, the ripeness classification for the olive fruit is Class 1 - Green Yellow.
+2025-01-02 18:05:12,542 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:05:16,289 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.jpg
+2025-01-02 18:05:16,290 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.txt
+2025-01-02 18:05:16,290 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571.txt
+2025-01-02 18:05:16,291 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571_polygon_vdb.json
+2025-01-02 18:05:16,292 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_2666_jpeg_jpg.rf.500424fb08fb164305edd4f290a28571_polygon_orchestrator.json
+2025-01-02 18:05:16,293 [INFO] 
+[Main] Processing: input/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 18:05:16,293 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 18:05:19,269 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:05:19,270 [INFO] Box 0: tensor([0.5163, 0.4898, 0.4981, 0.4246])
+2025-01-02 18:05:19,270 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:05:19,270 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 18:05:19,291 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e_crop0.png (Box #0)
+2025-01-02 18:05:19,301 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e_patch0.png (Box #0)
+2025-01-02 18:05:19,302 [INFO] [main_pipeline] Copied original: output/images/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 18:05:19,302 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:05:19,343 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 1 - Yellowish green
+2025-01-02 18:05:21,389 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:05:21,392 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:05:22,676 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:05:22,679 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the provided information, the ripeness classification for the olive fruit is Class 0 - Green.
+2025-01-02 18:05:22,679 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:05:25,845 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.jpg
+2025-01-02 18:05:25,845 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.txt
+2025-01-02 18:05:25,845 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e.txt
+2025-01-02 18:05:25,846 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e_polygon_vdb.json
+2025-01-02 18:05:25,847 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_2569_jpeg_jpg.rf.3f617e7f18463fc0a192825d4df3a92e_polygon_orchestrator.json
+2025-01-02 18:05:25,849 [INFO] 
+[Main] Processing: input/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 18:05:25,849 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 18:05:29,136 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:05:29,136 [INFO] Box 0: tensor([0.5169, 0.5101, 0.6024, 0.6366])
+2025-01-02 18:05:29,136 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:05:29,136 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 18:05:29,156 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9_crop0.png (Box #0)
+2025-01-02 18:05:29,162 [INFO] [INFO] Center-based patch saved: output/patches/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9_patch0.png (Box #0)
+2025-01-02 18:05:29,163 [INFO] [main_pipeline] Copied original: output/images/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 18:05:29,163 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:05:29,200 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:05:31,126 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:05:31,128 [INFO] ######### GPT FIRST CALL RESPONSE: Class 5 - purple/black
+2025-01-02 18:05:33,839 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:05:33,841 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the provided information, the final classification for the olive fruit ripeness would be Class 2 - <50% red. This conclusion considers the vector database label, which is typically more precise.
+2025-01-02 18:05:33,841 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:05:37,070 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.jpg
+2025-01-02 18:05:37,071 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.txt
+2025-01-02 18:05:37,071 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9.txt
+2025-01-02 18:05:37,072 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9_polygon_vdb.json
+2025-01-02 18:05:37,073 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_3011_jpeg_jpg.rf.abca3b9716efccdd99a3728ef2a070c9_polygon_orchestrator.json
+2025-01-02 18:05:37,074 [INFO] 
+[Main] Processing: input/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 18:05:37,074 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 18:05:40,831 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:05:40,832 [INFO] Box 0: tensor([0.5068, 0.4521, 0.5052, 0.6029])
+2025-01-02 18:05:40,832 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:05:40,832 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 18:05:40,844 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy_crop0.png (Box #0)
+2025-01-02 18:05:40,853 [INFO] [INFO] Center-based patch saved: output/patches/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy_patch0.png (Box #0)
+2025-01-02 18:05:40,854 [INFO] [main_pipeline] Copied original: output/images/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 18:05:40,854 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:05:40,893 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:05:42,645 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:05:42,649 [INFO] ######### GPT FIRST CALL RESPONSE: Class 3 - > 50% red
+2025-01-02 18:05:44,961 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:05:44,965 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the provided information, the ripeness classification is:
+
+Class 2 - <50% red
+
+This aligns with the vector database label.
+2025-01-02 18:05:44,966 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:05:48,350 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.jpg
+2025-01-02 18:05:48,351 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.txt
+2025-01-02 18:05:48,351 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy.txt
+2025-01-02 18:05:48,352 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy_polygon_vdb.json
+2025-01-02 18:05:48,353 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_3002_jpeg.rf.11af6e36b5beb51f4a28c929f2319f4a copy_polygon_orchestrator.json
+2025-01-02 18:05:48,354 [INFO] 
+[Main] Processing: input/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 18:05:48,354 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 18:05:51,596 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:05:51,597 [INFO] Box 0: tensor([0.5692, 0.4532, 0.5347, 0.6426])
+2025-01-02 18:05:51,597 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:05:51,597 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 18:05:51,629 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b_crop0.png (Box #0)
+2025-01-02 18:05:51,640 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b_patch0.png (Box #0)
+2025-01-02 18:05:51,640 [INFO] [main_pipeline] Copied original: output/images/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 18:05:51,640 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:05:51,677 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 3 - > 50% red
+2025-01-02 18:05:53,500 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:05:53,506 [INFO] ######### GPT FIRST CALL RESPONSE: Class 2 - <50% red
+2025-01-02 18:05:55,343 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:05:55,346 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the information provided and the image, the ripeness classification for the olive fruit is Class 3 - > 50% red.
+2025-01-02 18:05:55,346 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:06:00,371 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.jpg
+2025-01-02 18:06:00,372 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.txt
+2025-01-02 18:06:00,372 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b.txt
+2025-01-02 18:06:00,373 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b_polygon_vdb.json
+2025-01-02 18:06:00,375 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_2939_jpeg_jpg.rf.a056cf05530634d9d0822ddba1c4818b_polygon_orchestrator.json
+2025-01-02 18:06:00,376 [INFO] 
+[Main] Processing: input/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 18:06:00,376 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 18:06:03,962 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:06:03,963 [INFO] Box 0: tensor([0.5144, 0.5286, 0.5482, 0.5551])
+2025-01-02 18:06:03,963 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:06:03,963 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 18:06:03,997 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf_crop0.png (Box #0)
+2025-01-02 18:06:04,009 [INFO] [INFO] Center-based patch saved: output/patches/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf_patch0.png (Box #0)
+2025-01-02 18:06:04,009 [INFO] [main_pipeline] Copied original: output/images/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 18:06:04,009 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:06:04,046 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:06:05,587 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:05,589 [INFO] ######### GPT FIRST CALL RESPONSE: Class 5 - purple/black
+2025-01-02 18:06:08,041 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:08,045 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the information provided and the vector database label, the ripeness classification for the olive fruit is:
+
+Class 2 - <50% red
+2025-01-02 18:06:08,045 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:06:11,224 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.jpg
+2025-01-02 18:06:11,224 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.txt
+2025-01-02 18:06:11,225 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf.txt
+2025-01-02 18:06:11,226 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf_polygon_vdb.json
+2025-01-02 18:06:11,227 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_3087_jpeg_jpg.rf.f9881b672f8097d014510d4b11cf06cf_polygon_orchestrator.json
+2025-01-02 18:06:11,229 [INFO] 
+[Main] Processing: input/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 18:06:11,229 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 18:06:14,561 [INFO] [main_pipeline] Detected 4 bounding boxes.
+2025-01-02 18:06:14,561 [INFO] Box 0: tensor([0.5828, 0.5258, 0.7110, 0.5148])
+2025-01-02 18:06:14,561 [INFO] Box 1: tensor([0.9066, 0.0776, 0.1868, 0.1549])
+2025-01-02 18:06:14,561 [INFO] Box 2: tensor([0.8452, 0.3272, 0.3101, 0.4125])
+2025-01-02 18:06:14,561 [INFO] Box 3: tensor([0.6122, 0.4997, 0.7748, 0.9997])
+2025-01-02 18:06:14,562 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:06:14,562 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 18:06:14,597 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_crop0.png (Box #0)
+2025-01-02 18:06:14,604 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_patch0.png (Box #0)
+2025-01-02 18:06:14,607 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_crop1.png (Box #1)
+2025-01-02 18:06:14,613 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_patch1.png (Box #1)
+2025-01-02 18:06:14,625 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_crop2.png (Box #2)
+2025-01-02 18:06:14,635 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_patch2.png (Box #2)
+2025-01-02 18:06:14,710 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_crop3.png (Box #3)
+2025-01-02 18:06:14,717 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_patch3.png (Box #3)
+2025-01-02 18:06:14,718 [INFO] [main_pipeline] Copied original: output/images/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 18:06:14,718 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:06:14,772 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:06:16,138 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:16,140 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:06:17,769 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:17,772 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the information provided, the vector database labels the olive as Class 2 - <50% red. Therefore, the final ripeness classification for the olive fruit is **Class 2 - <50% red**.
+2025-01-02 18:06:17,861 [INFO] ################# Vectordatabase: Box #1 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:06:21,353 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:21,356 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:06:22,962 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:22,965 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the provided information, the final ripeness classification for the olive is Class 0 - Green.
+2025-01-02 18:06:23,099 [INFO] ################# Vectordatabase: Box #2 - Match 1: olive fruit Class 1 - Yellowish green
+2025-01-02 18:06:24,634 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:24,637 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:06:26,857 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:26,859 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the vector database label indicating "Class 1 - Yellowish green" and visual analysis, the ripeness classification of the olive fruit is Class 1 - Green Yellow.
+2025-01-02 18:06:26,966 [INFO] ################# Vectordatabase: Box #3 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:06:28,113 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:28,115 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:06:29,789 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:29,791 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the vector database label and the image, the olive fruit is classified as Class 2 - <50% red.
+2025-01-02 18:06:29,792 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:06:41,923 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.jpg
+2025-01-02 18:06:41,923 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.txt
+2025-01-02 18:06:41,924 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128.txt
+2025-01-02 18:06:41,928 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_polygon_vdb.json
+2025-01-02 18:06:41,933 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_2576_jpg.rf.54b4a5f6fc6ed04380cf5c3755a56128_polygon_orchestrator.json
+2025-01-02 18:06:41,934 [INFO] 
+[Main] Processing: input/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 18:06:41,934 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 18:06:44,790 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:06:44,790 [INFO] Box 0: tensor([0.4576, 0.4323, 0.6001, 0.4928])
+2025-01-02 18:06:44,790 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:06:44,790 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 18:06:44,815 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c_crop0.png (Box #0)
+2025-01-02 18:06:44,825 [INFO] [INFO] Center-based patch saved: output/patches/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c_patch0.png (Box #0)
+2025-01-02 18:06:44,825 [INFO] [main_pipeline] Copied original: output/images/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 18:06:44,825 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:06:44,862 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 1 - Yellowish green
+2025-01-02 18:06:46,339 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:46,342 [INFO] ######### GPT FIRST CALL RESPONSE: Class 0 - Green
+2025-01-02 18:06:48,241 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:48,244 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the additional information from the vector database, the ripeness classification for this olive fruit is Class 1 - Green Yellow.
+2025-01-02 18:06:48,245 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:06:53,481 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.jpg
+2025-01-02 18:06:53,482 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.txt
+2025-01-02 18:06:53,483 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c.txt
+2025-01-02 18:06:53,487 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c_polygon_vdb.json
+2025-01-02 18:06:53,489 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_3132_jpeg_jpg.rf.0fa737cded8c495e2766573b12bf6b7c_polygon_orchestrator.json
+2025-01-02 18:06:53,491 [INFO] 
+[Main] Processing: input/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 18:06:53,491 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 18:06:57,407 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:06:57,407 [INFO] Box 0: tensor([0.5696, 0.5091, 0.4930, 0.5319])
+2025-01-02 18:06:57,407 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:06:57,407 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 18:06:57,421 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e_crop0.png (Box #0)
+2025-01-02 18:06:57,429 [INFO] [INFO] Center-based patch saved: output/patches/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e_patch0.png (Box #0)
+2025-01-02 18:06:57,429 [INFO] [main_pipeline] Copied original: output/images/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 18:06:57,429 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:06:57,467 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 3 - > 50% red
+2025-01-02 18:06:59,119 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:06:59,122 [INFO] ######### GPT FIRST CALL RESPONSE: Class 5 - purple/black
+2025-01-02 18:07:00,368 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:07:00,370 [INFO] ######### GPT SECOND CALL RESPONSE: Class 5 - purple/black
+2025-01-02 18:07:00,370 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:07:03,591 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.jpg
+2025-01-02 18:07:03,591 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.txt
+2025-01-02 18:07:03,591 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e.txt
+2025-01-02 18:07:03,593 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e_polygon_vdb.json
+2025-01-02 18:07:03,594 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_3128_jpeg_jpg.rf.7b37d4fb358760f791c3a2a078d4af2e_polygon_orchestrator.json
+2025-01-02 18:07:03,595 [INFO] 
+[Main] Processing: input/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 18:07:03,595 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 18:07:06,900 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:07:06,900 [INFO] Box 0: tensor([0.4539, 0.4180, 0.5291, 0.5803])
+2025-01-02 18:07:06,900 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:07:06,900 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 18:07:06,933 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1_crop0.png (Box #0)
+2025-01-02 18:07:06,940 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1_patch0.png (Box #0)
+2025-01-02 18:07:06,940 [INFO] [main_pipeline] Copied original: output/images/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 18:07:06,940 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:07:06,984 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:07:08,881 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:07:08,885 [INFO] ######### GPT FIRST CALL RESPONSE: Class 5 - Purple/Black
+2025-01-02 18:07:10,097 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:07:10,099 [INFO] ######### GPT SECOND CALL RESPONSE: Class 5 - Purple/Black
+2025-01-02 18:07:10,099 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:07:13,318 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.jpg
+2025-01-02 18:07:13,318 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.txt
+2025-01-02 18:07:13,318 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1.txt
+2025-01-02 18:07:13,320 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1_polygon_vdb.json
+2025-01-02 18:07:13,321 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_2552_jpeg_jpg.rf.2e685e06945970c4b95a7febafa4c5f1_polygon_orchestrator.json
+2025-01-02 18:07:13,321 [INFO] 
+[Main] Processing: input/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 18:07:13,321 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 18:07:16,984 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:07:16,985 [INFO] Box 0: tensor([0.5243, 0.4889, 0.6581, 0.5966])
+2025-01-02 18:07:16,985 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:07:16,985 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 18:07:17,008 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a_crop0.png (Box #0)
+2025-01-02 18:07:17,014 [INFO] [INFO] Center-based patch saved: output/patches/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a_patch0.png (Box #0)
+2025-01-02 18:07:17,015 [INFO] [main_pipeline] Copied original: output/images/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 18:07:17,015 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:07:17,051 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 2 - <50% red
+2025-01-02 18:07:20,236 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:07:20,239 [INFO] ######### GPT FIRST CALL RESPONSE: Class 5 - purple/black
+2025-01-02 18:07:22,079 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:07:22,083 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image and the provided information from the vector database, the ripeness classification is:
+
+**Class 2 - <50% red**
+
+This aligns with the vector database label, indicating less than 50% of the olive surface has red spots.
+2025-01-02 18:07:22,084 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:07:25,286 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.jpg
+2025-01-02 18:07:25,286 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.txt
+2025-01-02 18:07:25,286 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a.txt
+2025-01-02 18:07:25,288 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a_polygon_vdb.json
+2025-01-02 18:07:25,289 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_3109_jpeg_jpg.rf.b48a422883638919fd975febd7317f1a_polygon_orchestrator.json
+2025-01-02 18:07:25,290 [INFO] 
+[Main] Processing: input/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 18:07:25,290 [INFO] 
+[main_pipeline] Segmenting objects in: input/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 18:07:28,672 [INFO] [main_pipeline] Detected 1 bounding boxes.
+2025-01-02 18:07:28,674 [INFO] Box 0: tensor([0.5009, 0.4440, 0.7203, 0.6162])
+2025-01-02 18:07:28,674 [INFO] 
+[main_pipeline] Saving patches of detected objects...
+2025-01-02 18:07:28,674 [INFO] 
+[process_and_save_input_image_patches] Loading input: input/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 18:07:28,691 [INFO] [INFO] Cropped object saved at: output/cropped/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83_crop0.png (Box #0)
+2025-01-02 18:07:28,700 [INFO] [INFO] Center-based patch saved: output/patches/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83_patch0.png (Box #0)
+2025-01-02 18:07:28,700 [INFO] [main_pipeline] Copied original: output/images/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 18:07:28,700 [INFO] 
+[main_pipeline] Classifying each segmented region with two-step GPT if available...
+2025-01-02 18:07:28,745 [INFO] ################# Vectordatabase: Box #0 - Match 1: olive fruit Class 1 - Yellowish green
+2025-01-02 18:07:29,964 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:07:29,967 [INFO] ######### GPT FIRST CALL RESPONSE: Class 5 - purple/black
+2025-01-02 18:07:34,265 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-02 18:07:34,268 [INFO] ######### GPT SECOND CALL RESPONSE: Based on the image, the olive appears to be purple, which aligns with Class 5 - purple/black according to the Jaén Scale. However, considering the vector database label, there seems to be a discrepancy. 
+
+To finalize, the image supports Class 5 - purple/black, but the vector database suggests Class 1 - Yellowish green. Without additional context, I would recommend trusting the image analysis which indicates Class 5 - purple/black, as the visual evidence is crucial in determining ripeness.
+2025-01-02 18:07:34,268 [INFO] 
+[main_pipeline] Annotating image + polygons...
+2025-01-02 18:07:37,477 [INFO] [annotate_image] Annotated image saved: output/processed_images/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.jpg
+2025-01-02 18:07:37,477 [INFO] [annotate_image] YOLO (VDB) saved: output/labels_vdb_bbox/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.txt
+2025-01-02 18:07:37,477 [INFO] [annotate_image] YOLO (Orchestrator) saved: output/labels_gpt_bbox/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83.txt
+2025-01-02 18:07:37,478 [INFO] [annotate_image] COCO (VDB) saved: output/labels_vdb_polygon/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83_polygon_vdb.json
+2025-01-02 18:07:37,479 [INFO] [annotate_image] COCO (Orchestrator) saved: output/labels_gpt_polygon/IMG_2593_jpeg_jpg.rf.cf908c05175813a67fb777824806da83_polygon_orchestrator.json
