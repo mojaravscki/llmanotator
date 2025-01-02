@@ -13,3 +13,4 @@ langchain-openai==0.2.14
 supervision==0.25.1
 shapely==2.0.6
 dataclasses-json==0.6.7
+langchain_community
