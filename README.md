@@ -8,6 +8,18 @@ Image annotation has long been a challenging task, especially for domain-specifi
 This repository aims to bridge the gap by leveraging LLMs to streamline and enhance the annotation process for images.
 
 
+# create conda env
+
+```
+conda create --name myenv python=3.10
+```
+
+# git clone env
+```
+git clone https://github.com/mojaravscki/llmanotator
+
+```
+
 # how to call it
 
 ```
