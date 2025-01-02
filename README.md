@@ -18,31 +18,61 @@ conda create --name myenv python=3.10
 ## 2- git clone env
 ```
 git clone https://github.com/mojaravscki/llmanotator
-
+cd llmanotator
 ```
 
-## 3- download groundingdino_swint_ogc.pth
+## 3- Install LLM Annotator requirements 
+
+```
+pip install -r requirements.txt
+```
+
+## 4- Install GroundingDINO
+```
+cd GroundingDINO
+pip install -q -e .
+cd ..
+```
+
+## 5- download groundingdino_swint_ogc.pth
 
 ```
 mkdir weights
 cd weights
 curl -L -o groundingdino_swint_ogc.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth
+cd ..
 ```
 
-## 4- download SAM
+
+## 6- Instal Segment Anything
+
 ```
+git clone https://github.com/facebookresearch/segment-anything.git
+cd segment-anything; pip install -e .
 cd..
+```
+
+## 7- Download sam_vit_h.pth (pr select one of options below)
+
+```
+curl -L -o sam_vit_h.pth https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+
 curl -L -o sam_vit_h_4b8939.pth https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
 
 curl -L -o sam_vit_l_0b3195.pth https://dl.fbaipublicfiles.com/segment_anything/sam_vit_l_0b3195.pth
 
 curl -L -o sam_vit_b_01ec64.pth https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth
+cd ..
 ```
 
-## download groundingdino_swint_ogc.pth
+## 8- Download CLIP weights
 
 ```
-pip install -r requirements.txt
+cd clip-vit-base-patch32/
+curl -L -o pytorch_model.bin https://huggingface.co/openai/clip-vit-base-patch32/resolve/main/pytorch_model.bin
+curl -L -o flax_model.msgpack https://huggingface.co/openai/clip-vit-base-patch32/resolve/main/flax_model.msgpack
+curl -L -o tf_model.h5 https://huggingface.co/openai/clip-vit-base-patch32/resolve/main/tf_model.h5
+cd ..
 ```
 
 
