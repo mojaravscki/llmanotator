@@ -44,7 +44,7 @@ cd ..
 ```
 
 
-## 6- Instal Segment Anything
+## 6- Install Segment Anything
 
 ```
 git clone https://github.com/facebookresearch/segment-anything.git
