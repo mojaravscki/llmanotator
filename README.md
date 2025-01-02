@@ -9,19 +9,19 @@ This repository aims to bridge the gap by leveraging LLMs to streamline and enha
 
 # HOW TO INSTALL
 
-## create conda env
+## 1 - create conda env
 
 ```
 conda create --name myenv python=3.10
 ```
 
-## git clone env
+## 2- git clone env
 ```
 git clone https://github.com/mojaravscki/llmanotator
 
 ```
 
-## download groundingdino_swint_ogc.pth
+## 3- download groundingdino_swint_ogc.pth
 
 ```
 mkdir weights
@@ -29,11 +29,19 @@ cd weights
 curl -L -o groundingdino_swint_ogc.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth
 ```
 
+## 4- download SAM
+```
+cd..
+curl -L -o sam_vit_h_4b8939.pth https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+
+curl -L -o sam_vit_l_0b3195.pth https://dl.fbaipublicfiles.com/segment_anything/sam_vit_l_0b3195.pth
+
+curl -L -o sam_vit_b_01ec64.pth https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth
+```
 
 ## download groundingdino_swint_ogc.pth
 
 ```
-cd ..
 pip install -r requirements.txt
 ```
 
